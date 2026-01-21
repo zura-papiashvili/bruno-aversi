@@ -1,0 +1,91 @@
+meta {
+  name: Create pharmacy stock entry
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/pharmacy-stock
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "pharmacyId": 0,
+    "productId": 0,
+    "stock": 0
+  }
+}
+
+example {
+  name: 201 Response
+  description: Stock entry created successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/pharmacy-stock
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "pharmacyId": 0,
+        "productId": 0,
+        "stock": 0
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "pharmacy": {
+            "id": 0,
+            "name": "",
+            "old_name": "",
+            "is_pickup": false,
+            "is_delivery": false,
+            "address": "",
+            "longitude": 0,
+            "latitude": 0,
+            "schedule": {},
+            "delivery_zones": [
+              {
+                "id": 0,
+                "name": "",
+                "region": {
+                  "id": 0,
+                  "name": ""
+                }
+              }
+            ],
+            "pickup_zones": [
+              {}
+            ],
+            "distanceMeters": 0
+          },
+          "product": {
+            "id": 0,
+            "name": "",
+            "code": ""
+          },
+          "stock": 0,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}

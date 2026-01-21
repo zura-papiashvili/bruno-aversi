@@ -1,0 +1,51 @@
+meta {
+  name: Get a product by ID visible for current user
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/products/:id
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~lang: 
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The product details.
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/products/:id
+    method: GET
+    mode: none
+    params:query: {
+      ~lang: 
+    }
+  
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

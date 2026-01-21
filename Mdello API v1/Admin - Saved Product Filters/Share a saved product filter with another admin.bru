@@ -1,0 +1,54 @@
+meta {
+  name: Share a saved product filter with another admin
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id/share
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "targetAdminId": 0
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id/share
+    method: POST
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "targetAdminId": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

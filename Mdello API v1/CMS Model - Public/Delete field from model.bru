@@ -1,0 +1,50 @@
+meta {
+  name: Delete field from model
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/cms/model/:id/field/:fieldId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+  fieldId: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/cms/model/:id/field/:fieldId
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+      fieldId: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false
+        }
+      '''
+    }
+  }
+}

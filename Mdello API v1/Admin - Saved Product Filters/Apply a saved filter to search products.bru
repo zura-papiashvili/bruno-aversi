@@ -1,0 +1,102 @@
+meta {
+  name: Apply a saved filter to search products
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id/apply
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Products filtered using the saved filter
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id/apply
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id/apply
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Saved filter not found
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id/apply
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

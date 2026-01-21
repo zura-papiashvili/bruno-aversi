@@ -1,0 +1,35 @@
+meta {
+  name: List all models for project
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/cms/model
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/cms/model
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

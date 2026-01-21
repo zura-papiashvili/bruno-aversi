@@ -1,0 +1,76 @@
+meta {
+  name: Upload the image. Returns the image url
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/cms/image
+  body: none
+  auth: apikey
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/cms/image
+    method: POST
+    mode: none
+    headers: {
+      x-api-key: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/cms/image
+    method: POST
+    mode: none
+    headers: {
+      x-api-key: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

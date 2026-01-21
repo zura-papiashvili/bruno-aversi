@@ -1,0 +1,77 @@
+meta {
+  name: Bulk update media tag priorities
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/media-tags/bulk/priority
+  body: json
+  auth: inherit
+}
+
+body:json {
+  [
+    {}
+  ]
+}
+
+example {
+  name: 200 Response
+  description: Media tag priorities updated successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/media-tags/bulk/priority
+    method: PUT
+    mode: json
+    body:json: {
+      [
+        ""
+      ]
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Unauthorized
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/media-tags/bulk/priority
+    method: PUT
+    mode: json
+    body:json: {
+      [
+        ""
+      ]
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

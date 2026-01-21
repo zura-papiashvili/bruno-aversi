@@ -1,0 +1,509 @@
+meta {
+  name: Update a product by ID
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/products/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "name": "",
+    "slug": "",
+    "description": "",
+    "annotation": "",
+    "price": 0,
+    "listPrice": 0,
+    "discount": 0,
+    "brandId": 0,
+    "genericId": 0,
+    "formId": 0,
+    "code": "",
+    "mainCategoryId": 0,
+    "mainOperationalCategoryId": 0,
+    "priorityCategoryId": 0,
+    "categoryIds": [],
+    "customerGroupIds": [],
+    "farmGroupIds": [],
+    "isPurchasable": false,
+    "hasFeatures": false,
+    "minPurchaseQuantity": 0,
+    "maxPurchaseQuantity": 0,
+    "searchKeywords": [],
+    "stopWords": [],
+    "showAnnotation": false,
+    "showOnlineStock": false,
+    "showRelatedProducts": false,
+    "showVariantProducts": false,
+    "showAttributes": false,
+    "status": "",
+    "parentProductId": 0
+  }
+}
+
+example {
+  name: 200 Response
+  description: The updated product.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "slug": "",
+        "description": "",
+        "annotation": "",
+        "price": 0,
+        "listPrice": 0,
+        "discount": 0,
+        "brandId": 0,
+        "genericId": 0,
+        "formId": 0,
+        "code": "",
+        "mainCategoryId": 0,
+        "mainOperationalCategoryId": 0,
+        "priorityCategoryId": 0,
+        "categoryIds": [],
+        "customerGroupIds": [],
+        "farmGroupIds": [],
+        "isPurchasable": false,
+        "hasFeatures": false,
+        "minPurchaseQuantity": 0,
+        "maxPurchaseQuantity": 0,
+        "searchKeywords": [],
+        "stopWords": [],
+        "showAnnotation": false,
+        "showOnlineStock": false,
+        "showRelatedProducts": false,
+        "showVariantProducts": false,
+        "showAttributes": false,
+        "status": "",
+        "parentProductId": 0
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "slug": "",
+          "description": "",
+          "annotation": "",
+          "price": 0,
+          "listPrice": 0,
+          "discount": 0,
+          "brand": {
+            "id": 0,
+            "name": "",
+            "description": "",
+            "color": "",
+            "logoUrl": "",
+            "erpId": 0,
+            "sortOrder": 0,
+            "promoted": false,
+            "selectedProducts": [],
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": ""
+          },
+          "generic": {
+            "id": 0,
+            "name": "",
+            "erpId": 0,
+            "products": [],
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": ""
+          },
+          "form": {
+            "id": 0,
+            "name": "",
+            "erpId": 0,
+            "erpParentId": 0,
+            "products": [],
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": ""
+          },
+          "mainCategory": {
+            "id": 0,
+            "name": "",
+            "slug": "",
+            "parent": "",
+            "erpId": 0,
+            "erpParentId": 0,
+            "children": [],
+            "mainCategoryProducts": [],
+            "products": [],
+            "iconUrl": "",
+            "status": "",
+            "deliveryMethods": [
+              {
+                "id": 0,
+                "name": "",
+                "type": "",
+                "categories": [],
+                "description": "",
+                "onTimePriceSet": "",
+                "icon": "",
+                "requiresAddress": false,
+                "isActive": false,
+                "schedule": {},
+                "minDeliveryTimeMinutes": 0,
+                "maxDeliveryTimeMinutes": 0,
+                "fastStartMode": "",
+                "fastStartOffsetMinutes": 0,
+                "weightLimit": 0,
+                "orderMinAmount": 0,
+                "orderMaxAmount": 0,
+                "priceLimit": 0,
+                "price": 0,
+                "additionalGroupPriceType": "",
+                "additionalGroupPriceValue": 0,
+                "backendProcessing": "",
+                "singlePharmacyLogic": false,
+                "intercityLogic": false,
+                "autoSendERP": false,
+                "manualSendERP": false,
+                "sortOrder": 0,
+                "createdAt": "",
+                "updatedAt": "",
+                "deletedAt": "",
+                "customerGroups": [
+                  {
+                    "id": 0,
+                    "name": "",
+                    "description": "",
+                    "isActive": false,
+                    "createdAt": "",
+                    "updatedAt": "",
+                    "deletedAt": "",
+                    "deliveryMethods": []
+                  }
+                ],
+                "tariffs": [
+                  {
+                    "id": 0,
+                    "deliveryMethod": "",
+                    "zoneId": 0,
+                    "minOrderValue": 0,
+                    "maxOrderValue": 0,
+                    "priceType": "",
+                    "priceValue": 0,
+                    "createdAt": "",
+                    "updatedAt": "",
+                    "deletedAt": ""
+                  }
+                ],
+                "restrictedProducts": [],
+                "restrictedZones": [
+                  {
+                    "id": 0,
+                    "name": "",
+                    "is_active": false,
+                    "is_default": false,
+                    "coverRadiusKm": 0,
+                    "hub_pharmacy": {
+                      "id": 0,
+                      "name": "",
+                      "old_name": "",
+                      "address": "",
+                      "longitude": 0,
+                      "latitude": 0,
+                      "phone": "",
+                      "email": "",
+                      "imgUrl": "",
+                      "erpId": 0,
+                      "unique_code": "",
+                      "internal_code": "",
+                      "site_code": "",
+                      "cod_ave": "",
+                      "is_active": false,
+                      "is_delivery": false,
+                      "is_pickup": false,
+                      "schedule": {},
+                      "delivery_priority": 0,
+                      "delivery_zones": [],
+                      "pickup_zones": [],
+                      "createdAt": "",
+                      "updatedAt": "",
+                      "deletedAt": ""
+                    },
+                    "priority": 0,
+                    "region": {
+                      "id": 0,
+                      "name": "",
+                      "code": "",
+                      "country": "",
+                      "is_active": false,
+                      "priority": 0,
+                      "coverRadiusKm": 0,
+                      "createdAt": "",
+                      "updatedAt": "",
+                      "deletedAt": "",
+                      "zones": []
+                    },
+                    "delivery_pharmacies": [
+                      {}
+                    ],
+                    "pickup_pharmacies": [
+                      {}
+                    ],
+                    "createdAt": "",
+                    "updatedAt": "",
+                    "deletedAt": ""
+                  }
+                ],
+                "allowedPaymentMethods": [
+                  {
+                    "id": 0,
+                    "name": "",
+                    "categories": [],
+                    "schedule": {},
+                    "provider": "",
+                    "preferredPaymentMethod": "",
+                    "tbcPaymentMethods": [],
+                    "useEmbeddedCheckout": false,
+                    "designId": "",
+                    "flittPaymentMethods": [],
+                    "flittDisabledMethods": [],
+                    "flittWalletMethods": [],
+                    "preauthorization": false,
+                    "icon": "",
+                    "isActive": false,
+                    "minOrderAmount": 0,
+                    "maxOrderAmount": 0,
+                    "countryRestrictions": [],
+                    "categoryRestrictions": [],
+                    "productRestrictions": [],
+                    "customerGroupRestrictions": [
+                      {}
+                    ],
+                    "regionRestrictions": [
+                      {}
+                    ],
+                    "zoneRestrictions": [
+                      {}
+                    ],
+                    "allowedDeliveryMethods": [],
+                    "sortOrder": 0,
+                    "createdAt": "",
+                    "updatedAt": "",
+                    "deletedAt": ""
+                  }
+                ]
+              }
+            ],
+            "paymentMethods": [
+              {}
+            ],
+            "isPurchasable": false,
+            "enableAddToCart": false,
+            "enableAddToWishlist": false,
+            "metaTitle": "",
+            "metaDescription": "",
+            "type": "",
+            "metaKeywords": [
+              {
+                "id": 0,
+                "keyword": "",
+                "productCategories": [],
+                "createdAt": "",
+                "updatedAt": "",
+                "deletedAt": ""
+              }
+            ],
+            "customerGroups": [
+              {}
+            ],
+            "features": [
+              {}
+            ],
+            "featureGroups": [
+              {}
+            ],
+            "sortOrder": 0,
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": ""
+          },
+          "mainOperationalCategory": {},
+          "priorityCategory": {},
+          "categories": [
+            {}
+          ],
+          "code": "",
+          "erpId": 0,
+          "erpSyncHash": "",
+          "isPurchasable": false,
+          "hasFeatures": false,
+          "minPurchaseQuantity": 0,
+          "maxPurchaseQuantity": 0,
+          "showAnnotation": false,
+          "showOnlineStock": false,
+          "showRelatedProducts": false,
+          "showVariantProducts": false,
+          "showAttributes": false,
+          "searchKeywords": [
+            {
+              "id": 0,
+              "keyword": "",
+              "products": []
+            }
+          ],
+          "stopWords": [
+            {
+              "id": 0,
+              "word": "",
+              "products": []
+            }
+          ],
+          "customerGroups": [
+            {}
+          ],
+          "farmGroups": [
+            {
+              "id": 0,
+              "name": "",
+              "erpId": "",
+              "products": [],
+              "createdAt": "",
+              "updatedAt": "",
+              "deletedAt": ""
+            }
+          ],
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": "",
+          "images": [
+            {
+              "id": 0,
+              "product": "",
+              "cmsImage": {
+                "id": 0,
+                "externalProjectId": "",
+                "externalUserId": "",
+                "originalFileName": "",
+                "extension": "",
+                "fileName": "",
+                "mimetype": "",
+                "size": 0,
+                "width": 0,
+                "height": 0,
+                "url": "",
+                "externalId": "",
+                "createdAt": "",
+                "updatedAt": ""
+              },
+              "isMain": false,
+              "sortOrder": 0
+            }
+          ],
+          "internalCode": "",
+          "stockAvailable": false,
+          "externalProjectId": "",
+          "incrementStep": 0,
+          "internalComment": "",
+          "status": "",
+          "variationGroupId": 0,
+          "erpVariationGroupCode": "",
+          "relatedGroupId": 0,
+          "productFeatureValues": [
+            {}
+          ],
+          "extraData": {}
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "slug": "",
+        "description": "",
+        "annotation": "",
+        "price": 0,
+        "listPrice": 0,
+        "discount": 0,
+        "brandId": 0,
+        "genericId": 0,
+        "formId": 0,
+        "code": "",
+        "mainCategoryId": 0,
+        "mainOperationalCategoryId": 0,
+        "priorityCategoryId": 0,
+        "categoryIds": [],
+        "customerGroupIds": [],
+        "farmGroupIds": [],
+        "isPurchasable": false,
+        "hasFeatures": false,
+        "minPurchaseQuantity": 0,
+        "maxPurchaseQuantity": 0,
+        "searchKeywords": [],
+        "stopWords": [],
+        "showAnnotation": false,
+        "showOnlineStock": false,
+        "showRelatedProducts": false,
+        "showVariantProducts": false,
+        "showAttributes": false,
+        "status": "",
+        "parentProductId": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

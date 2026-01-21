@@ -1,0 +1,163 @@
+meta {
+  name: Update the request action
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_private/v1/request-action/:id
+  body: json
+  auth: apikey
+}
+
+params:path {
+  id: 
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+body:json {
+  {
+    "description": "",
+    "data": ""
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/request-action/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "description": "",
+        "data": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "project": "",
+          "user": "",
+          "category": "",
+          "description": "",
+          "metadata": {
+            "project": "",
+            "apartmentNumber": "",
+            "photos": []
+          },
+          "data": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response
+  description: Data can't be updated if action is not pending
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/request-action/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "description": "",
+        "data": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/request-action/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "description": "",
+        "data": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

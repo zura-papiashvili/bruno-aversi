@@ -1,0 +1,117 @@
+meta {
+  name: Get Currently Logged In User
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/auth/self
+  body: none
+  auth: apikey
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  description: User profile retrieved successfully
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/auth/self
+    method: GET
+    mode: none
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "",
+          "fullName": "",
+          "firstName": "",
+          "lastName": "",
+          "username": "",
+          "idNumber": "",
+          "phone": "",
+          "email": "",
+          "project": "",
+          "isEmailVerified": false,
+          "isPhoneVerified": false,
+          "addresses": [
+            {
+              "title": "",
+              "firstName": "",
+              "lastName": "",
+              "phone": "",
+              "phoneSuffix": "",
+              "address": "",
+              "zoneId": 0,
+              "latitude": 0,
+              "longitude": 0,
+              "comment": "",
+              "isPrimary": false,
+              "region": "",
+              "zone": ""
+            }
+          ],
+          "metadata": {},
+          "createdAt": "",
+          "updatedAt": "",
+          "customerGroup": "",
+          "showMarketingField": false,
+          "imageUrl": "",
+          "zone": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/auth/self
+    method: GET
+    mode: none
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

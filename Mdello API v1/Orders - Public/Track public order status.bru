@@ -1,0 +1,45 @@
+meta {
+  name: Track public order status
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/orders/track
+  body: none
+  auth: inherit
+}
+
+params:query {
+  orderNumber: 
+  contact: 
+}
+
+example {
+  name: 200 Response
+  description: Returns sanitized public order details.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/orders/track
+    method: GET
+    mode: none
+    params:query: {
+      orderNumber: 
+      contact: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

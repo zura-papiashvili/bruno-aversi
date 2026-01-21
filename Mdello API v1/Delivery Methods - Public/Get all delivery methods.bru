@@ -1,0 +1,59 @@
+meta {
+  name: Get all delivery methods
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/delivery-methods
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~name: 
+  ~requiresAddress: 
+  ~isActive: 
+  ~type: 
+}
+
+example {
+  name: 200 Response
+  description: List of delivery methods.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/delivery-methods
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~name: 
+      ~requiresAddress: 
+      ~isActive: 
+      ~type: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

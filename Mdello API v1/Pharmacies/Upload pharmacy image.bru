@@ -1,0 +1,94 @@
+meta {
+  name: Upload pharmacy image
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/pharmacies/:id/image
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The pharmacy image has been uploaded.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/pharmacies/:id/image
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "old_name": "",
+          "address": "",
+          "longitude": 0,
+          "latitude": 0,
+          "phone": "",
+          "email": "",
+          "imgUrl": "",
+          "unique_code": "",
+          "internal_code": "",
+          "site_code": "",
+          "cod_ave": "",
+          "is_active": false,
+          "schedule": {},
+          "createdAt": "",
+          "updatedAt": "",
+          "is_delivery": false,
+          "is_pickup": false
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/pharmacies/:id/image
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

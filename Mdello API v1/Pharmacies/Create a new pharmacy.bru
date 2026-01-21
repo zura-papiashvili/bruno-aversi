@@ -1,0 +1,105 @@
+meta {
+  name: Create a new pharmacy
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/pharmacies
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "",
+    "old_name": "",
+    "address": "",
+    "longitude": 0,
+    "latitude": 0,
+    "phone": "",
+    "email": "",
+    "imgUrl": "",
+    "unique_code": "",
+    "internal_code": "",
+    "site_code": "",
+    "cod_ave": "",
+    "is_active": false,
+    "schedule": {},
+    "delivery_zone_ids": [],
+    "is_delivery": false,
+    "is_pickup": false,
+    "delivery_priority": 0
+  }
+}
+
+example {
+  name: 201 Response
+  description: The pharmacy has been successfully created.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/pharmacies
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "name": "",
+        "old_name": "",
+        "address": "",
+        "longitude": 0,
+        "latitude": 0,
+        "phone": "",
+        "email": "",
+        "imgUrl": "",
+        "unique_code": "",
+        "internal_code": "",
+        "site_code": "",
+        "cod_ave": "",
+        "is_active": false,
+        "schedule": {},
+        "delivery_zone_ids": [],
+        "is_delivery": false,
+        "is_pickup": false,
+        "delivery_priority": 0
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "old_name": "",
+          "address": "",
+          "longitude": 0,
+          "latitude": 0,
+          "phone": "",
+          "email": "",
+          "imgUrl": "",
+          "unique_code": "",
+          "internal_code": "",
+          "site_code": "",
+          "cod_ave": "",
+          "is_active": false,
+          "schedule": {},
+          "createdAt": "",
+          "updatedAt": "",
+          "is_delivery": false,
+          "is_pickup": false
+        }
+      '''
+    }
+  }
+}

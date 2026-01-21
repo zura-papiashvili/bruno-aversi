@@ -1,0 +1,74 @@
+meta {
+  name: Remove a feature value from a product
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/product-feature-values/product/:productId/feature-value/:featureValueId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  productId: 
+  featureValueId: 
+}
+
+example {
+  name: 204 Response
+  description: Feature value has been successfully removed from the product.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/product-feature-values/product/:productId/feature-value/:featureValueId
+    method: DELETE
+    mode: none
+    params:path: {
+      productId: 
+      featureValueId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Feature value assignment not found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/product-feature-values/product/:productId/feature-value/:featureValueId
+    method: DELETE
+    mode: none
+    params:path: {
+      productId: 
+      featureValueId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

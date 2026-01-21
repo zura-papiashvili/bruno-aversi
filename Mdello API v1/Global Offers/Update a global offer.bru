@@ -1,0 +1,99 @@
+meta {
+  name: Update a global offer
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/global-offers/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "text": ""
+  }
+}
+
+example {
+  name: 200 Response
+  description: The global offer has been successfully updated.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/global-offers/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "text": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "text": "",
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Global offer not found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/global-offers/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "text": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

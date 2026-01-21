@@ -1,0 +1,70 @@
+meta {
+  name: Project stats
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/projects/:projectId/stats
+  body: none
+  auth: inherit
+}
+
+params:path {
+  projectId: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/projects/:projectId/stats
+    method: GET
+    mode: none
+    params:path: {
+      projectId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/projects/:projectId/stats
+    method: GET
+    mode: none
+    params:path: {
+      projectId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

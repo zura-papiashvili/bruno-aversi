@@ -1,0 +1,61 @@
+meta {
+  name: Get all filter data
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/features/filters
+  body: none
+  auth: apikey
+}
+
+params:query {
+  ~categoryIds: 
+  ~offerIds: 
+  ~cartOfferIds: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  description: Filter data.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/features/filters
+    method: GET
+    mode: none
+    params:query: {
+      ~categoryIds: 
+      ~offerIds: 
+      ~cartOfferIds: 
+    }
+  
+    headers: {
+      x-api-key: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

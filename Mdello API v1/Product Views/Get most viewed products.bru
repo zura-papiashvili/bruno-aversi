@@ -1,0 +1,71 @@
+meta {
+  name: Get most viewed products
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/products/most-viewed
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~days: 
+}
+
+example {
+  name: 200 Response
+  description: Most viewed products
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/products/most-viewed
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~days: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "product": {},
+            "totalViews": 0,
+            "uniqueViewers": 0,
+            "currentlyViewing": 0,
+            "lastViewedAt": "",
+            "productId": 0,
+            "productName": "",
+            "productImgUrl": "",
+            "price": 0,
+            "listPrice": 0,
+            "offerInfo": {}
+          }
+        ]
+      '''
+    }
+  }
+}

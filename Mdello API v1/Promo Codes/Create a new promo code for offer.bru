@@ -1,0 +1,98 @@
+meta {
+  name: Create a new promo code for offer
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/promo-codes/:offerId
+  body: json
+  auth: inherit
+}
+
+params:path {
+  offerId: 
+}
+
+body:json {
+  {
+    "name": "",
+    "code": "",
+    "validFrom": "",
+    "validTo": "",
+    "isOneTime": false,
+    "maxUniqueUsers": 0,
+    "userId": "",
+    "customerGroupId": 0,
+    "status": "",
+    "discountType": "",
+    "discountValue": 0
+  }
+}
+
+example {
+  name: 201 Response
+  description: Promo code created successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/promo-codes/:offerId
+    method: POST
+    mode: json
+    params:path: {
+      offerId: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "code": "",
+        "validFrom": "",
+        "validTo": "",
+        "isOneTime": false,
+        "maxUniqueUsers": 0,
+        "userId": "",
+        "customerGroupId": 0,
+        "status": "",
+        "discountType": "",
+        "discountValue": 0
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "code": "",
+          "validFrom": "",
+          "validTo": "",
+          "isOneTime": false,
+          "maxUniqueUsers": 0,
+          "usedUniqueUsersCount": 0,
+          "status": "",
+          "discountType": "",
+          "discountValue": 0,
+          "userId": "",
+          "customerGroup": "",
+          "isActive": false,
+          "expiresAt": "",
+          "offer": "",
+          "createdAt": "",
+          "updatedAt": ""
+        }
+      '''
+    }
+  }
+}

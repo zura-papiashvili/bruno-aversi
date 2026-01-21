@@ -1,0 +1,70 @@
+meta {
+  name: List all boxes for user. Search is not implemented (1)
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api_public/v3/cms/content/api/:apiId
+  body: none
+  auth: inherit
+}
+
+params:query {
+  primaryV2: 
+  secondaryV2: 
+  final: 
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~primary: 
+  ~secondary: 
+  ~sort: 
+}
+
+params:path {
+  apiId: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v3/cms/content/api/:apiId
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~primary: 
+      ~secondary: 
+      primaryV2: 
+      secondaryV2: 
+      final: 
+      ~sort: 
+    }
+  
+    params:path: {
+      apiId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

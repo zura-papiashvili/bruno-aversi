@@ -1,0 +1,54 @@
+meta {
+  name: List order items with candidate pharmacies
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/orders/:orderId/assignments
+  body: none
+  auth: inherit
+}
+
+params:query {
+  zoneId: 
+}
+
+params:path {
+  orderId: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/orders/:orderId/assignments
+    method: GET
+    mode: none
+    params:query: {
+      zoneId: 
+    }
+  
+    params:path: {
+      orderId: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}

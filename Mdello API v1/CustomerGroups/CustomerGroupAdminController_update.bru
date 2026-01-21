@@ -1,0 +1,58 @@
+meta {
+  name: CustomerGroupAdminController_update
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/customer-groups/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "name": "",
+    "description": "",
+    "isActive": false
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/customer-groups/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "isActive": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

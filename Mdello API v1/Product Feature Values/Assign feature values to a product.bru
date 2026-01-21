@@ -1,0 +1,93 @@
+meta {
+  name: Assign feature values to a product
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/product-feature-values/assign
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "productId": 0,
+    "featureValueIds": []
+  }
+}
+
+example {
+  name: 201 Response
+  description: Feature values have been successfully assigned to the product.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/product-feature-values/assign
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "productId": 0,
+        "featureValueIds": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "id": 0,
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": "",
+            "product": {},
+            "featureValue": {}
+          }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Product or feature values not found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/product-feature-values/assign
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "productId": 0,
+        "featureValueIds": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

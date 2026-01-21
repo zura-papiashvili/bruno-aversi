@@ -1,0 +1,113 @@
+meta {
+  name: Add a new bank card
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api_private/v1/payment/bankCard
+  body: json
+  auth: apikey
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+body:json {
+  {
+    "provider": "",
+    "name": "",
+    "successURL": "",
+    "errorURL": "",
+    "merchantId": ""
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/payment/bankCard
+    method: POST
+    mode: json
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "provider": "",
+        "name": "",
+        "successURL": "",
+        "errorURL": "",
+        "merchantId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "transactionUrl": "",
+          "success": false
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/payment/bankCard
+    method: POST
+    mode: json
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "provider": "",
+        "name": "",
+        "successURL": "",
+        "errorURL": "",
+        "merchantId": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

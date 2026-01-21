@@ -1,0 +1,55 @@
+meta {
+  name: Get a product form
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/product-forms/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/product-forms/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "erpId": 0,
+          "erpParentId": 0,
+          "products": [],
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}

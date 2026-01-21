@@ -1,0 +1,98 @@
+meta {
+  name: Add images to a product by uploading files
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/products/:id/images
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 201 Response
+  description: Images added to product.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "id": 0,
+            "product": "",
+            "cmsImage": {
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "originalFileName": "",
+              "extension": "",
+              "fileName": "",
+              "mimetype": "",
+              "size": 0,
+              "width": 0,
+              "height": 0,
+              "url": "",
+              "externalId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            },
+            "isMain": false,
+            "sortOrder": 0
+          }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

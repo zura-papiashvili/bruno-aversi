@@ -1,0 +1,35 @@
+meta {
+  name: HealthController_checkLiveness
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/health/liveness
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/health/liveness
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

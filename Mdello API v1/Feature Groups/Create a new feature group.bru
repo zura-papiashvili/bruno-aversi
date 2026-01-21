@@ -1,0 +1,108 @@
+meta {
+  name: Create a new feature group
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/feature-groups
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "",
+    "internalName": "",
+    "sortOrder": 0,
+    "isActive": false,
+    "categoryIds": []
+  }
+}
+
+example {
+  name: 201 Response
+  description: Feature group has been successfully created.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/feature-groups
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "name": "",
+        "internalName": "",
+        "sortOrder": 0,
+        "isActive": false,
+        "categoryIds": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "internalName": "",
+          "sortOrder": 0,
+          "isActive": false,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": "",
+          "features": [
+            {}
+          ],
+          "categories": [
+            {}
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 409 Response
+  description: Feature group with this internal name already exists.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/feature-groups
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "name": "",
+        "internalName": "",
+        "sortOrder": 0,
+        "isActive": false,
+        "categoryIds": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

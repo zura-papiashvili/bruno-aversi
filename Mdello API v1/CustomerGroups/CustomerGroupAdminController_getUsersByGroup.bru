@@ -1,0 +1,52 @@
+meta {
+  name: CustomerGroupAdminController_getUsersByGroup
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/customer-groups/:id/users
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 
+  limit: 
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/customer-groups/:id/users
+    method: GET
+    mode: none
+    params:query: {
+      page: 
+      limit: 
+    }
+  
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

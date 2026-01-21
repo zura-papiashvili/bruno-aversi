@@ -1,0 +1,100 @@
+meta {
+  name: Update the admin
+  type: http
+  seq: 15
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/auth/admin/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "fullName": "",
+    "firstName": "",
+    "lastName": "",
+    "password": "",
+    "roles": []
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/admin/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "fullName": "",
+        "firstName": "",
+        "lastName": "",
+        "password": "",
+        "roles": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/admin/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "fullName": "",
+        "firstName": "",
+        "lastName": "",
+        "password": "",
+        "roles": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

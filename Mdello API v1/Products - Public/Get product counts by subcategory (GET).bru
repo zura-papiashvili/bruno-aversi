@@ -1,0 +1,36 @@
+meta {
+  name: Get product counts by subcategory (GET)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/products/counts/by-subcategory
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: Product counts per subcategory.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/products/counts/by-subcategory
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

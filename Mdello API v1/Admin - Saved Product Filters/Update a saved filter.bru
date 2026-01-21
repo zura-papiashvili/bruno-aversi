@@ -1,0 +1,190 @@
+meta {
+  name: Update a saved filter
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "name": "",
+    "description": "",
+    "filters": {}
+  }
+}
+
+example {
+  name: 200 Response
+  description: Saved filter updated successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "filters": {}
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "filters": {},
+          "admin": {
+            "id": 0,
+            "email": "",
+            "password": "",
+            "firstName": "",
+            "lastName": "",
+            "fullName": "",
+            "isEmailVerified": false,
+            "countryCode": "",
+            "roles": [
+              {
+                "adminRoleId": 0,
+                "externalProjectId": "",
+                "adminId": 0,
+                "roleId": 0,
+                "role": {
+                  "id": {},
+                  "externalProjectId": "",
+                  "name": "",
+                  "permissions": [
+                    {
+                      "id": 0,
+                      "resource": "",
+                      "verb": "",
+                      "createdAt": ""
+                    }
+                  ],
+                  "createdAt": ""
+                },
+                "admin": ""
+              }
+            ],
+            "preferences": [
+              {
+                "id": 0,
+                "key": "",
+                "value": {},
+                "adminId": 0,
+                "admin": "",
+                "createdAt": "",
+                "updatedAt": ""
+              }
+            ],
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          "description": "",
+          "shared": false,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Saved filter not found
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "filters": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 409 Response
+  description: A saved filter with this name already exists
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "filters": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

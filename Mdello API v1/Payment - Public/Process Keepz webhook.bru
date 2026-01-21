@@ -1,0 +1,48 @@
+meta {
+  name: Process Keepz webhook
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/payment/keepz/:key
+  body: none
+  auth: inherit
+}
+
+params:path {
+  key: 
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/payment/keepz/:key
+    method: POST
+    mode: none
+    params:path: {
+      key: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false
+        }
+      '''
+    }
+  }
+}

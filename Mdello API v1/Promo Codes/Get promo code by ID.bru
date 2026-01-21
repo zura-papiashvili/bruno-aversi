@@ -1,0 +1,42 @@
+meta {
+  name: Get promo code by ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/promo-codes/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/promo-codes/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

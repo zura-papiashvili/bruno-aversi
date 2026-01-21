@@ -1,0 +1,35 @@
+meta {
+  name: PrometheusController_index
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/metrics
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/metrics
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,54 @@
+meta {
+  name: Reorder brand
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/brands/:id/reorder
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "position": 0
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/brands/:id/reorder
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "position": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

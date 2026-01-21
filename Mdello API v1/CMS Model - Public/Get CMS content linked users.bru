@@ -1,0 +1,50 @@
+meta {
+  name: Get CMS content linked users
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/cms/content/:id/user
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/cms/content/:id/user
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
