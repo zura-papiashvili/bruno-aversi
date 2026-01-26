@@ -1,0 +1,99 @@
+meta {
+  name: Set main image for a product
+  type: http
+  seq: 11
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId/main
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+  imageId: 
+}
+
+example {
+  name: 200 Response
+  description: Main image set for product.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId/main
+    method: PUT
+    mode: none
+    params:path: {
+      id: 
+      imageId: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "product": "",
+          "cmsImage": {
+            "id": 0,
+            "externalProjectId": "",
+            "externalUserId": "",
+            "originalFileName": "",
+            "extension": "",
+            "fileName": "",
+            "mimetype": "",
+            "size": 0,
+            "width": 0,
+            "height": 0,
+            "url": "",
+            "externalId": "",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          "isMain": false,
+          "sortOrder": 0
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId/main
+    method: PUT
+    mode: none
+    params:path: {
+      id: 
+      imageId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

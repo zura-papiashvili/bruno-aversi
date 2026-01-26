@@ -1,0 +1,66 @@
+meta {
+  name: Update a zone by ID
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/zones/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {}
+}
+
+example {
+  name: 200 Response
+  description: The updated zone.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/zones/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "is_active": false,
+          "is_default": false,
+          "hub_pharmacy_id": 0,
+          "priority": 0,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": "",
+          "region": ""
+        }
+      '''
+    }
+  }
+}

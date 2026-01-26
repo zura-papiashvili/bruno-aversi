@@ -1,0 +1,36 @@
+meta {
+  name: Get filter data for related products from purchase history
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/products/related/from-purchases/filters
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: Filter data for related products from purchase history
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/products/related/from-purchases/filters
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

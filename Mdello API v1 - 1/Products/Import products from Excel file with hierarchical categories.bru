@@ -1,0 +1,119 @@
+meta {
+  name: Import products from Excel file with hierarchical categories
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/products/import/excel
+  body: none
+  auth: inherit
+}
+
+params:query {
+  mode: 
+  createCategories: 
+}
+
+example {
+  name: 200 Response
+  description: Excel import result with statistics
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/import/excel
+    method: POST
+    mode: none
+    params:query: {
+      mode: 
+      createCategories: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "data": {
+            "imported": 0,
+            "updated": 0,
+            "errors": [
+              {
+                "row": 0,
+                "error": "",
+                "data": {}
+              }
+            ]
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/import/excel
+    method: POST
+    mode: none
+    params:query: {
+      mode: 
+      createCategories: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/import/excel
+    method: POST
+    mode: none
+    params:query: {
+      mode: 
+      createCategories: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

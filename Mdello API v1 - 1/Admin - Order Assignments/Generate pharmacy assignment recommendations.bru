@@ -1,0 +1,68 @@
+meta {
+  name: Generate pharmacy assignment recommendations
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/orders/:orderId/assignments/recommend
+  body: json
+  auth: inherit
+}
+
+params:query {
+  ~lang: 
+}
+
+params:path {
+  orderId: 
+}
+
+body:json {
+  {
+    "zoneId": 0,
+    "forcedPharmacyIds": [],
+    "minimizePharmacies": false,
+    "maxAlternatives": 0
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/orders/:orderId/assignments/recommend
+    method: POST
+    mode: json
+    params:query: {
+      ~lang: 
+    }
+  
+    params:path: {
+      orderId: 
+    }
+  
+    body:json: {
+      {
+        "zoneId": 0,
+        "forcedPharmacyIds": [],
+        "minimizePharmacies": false,
+        "maxAlternatives": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

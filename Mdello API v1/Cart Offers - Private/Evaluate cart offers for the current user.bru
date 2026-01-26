@@ -12,6 +12,7 @@ post {
 
 headers {
   x-session-id: {{apiKey}}
+  x-private-api-key: eaba78b7b55c3e8f3e39f47359647dd01b112c55342257a4
 }
 
 auth:apikey {
@@ -24,29 +25,30 @@ body:json {
   {
     "lines": [
       {
-        "productId": 0,
-        "quantity": 0
+        "productId": 13922,
+        "quantity": 1
+      },
+      {
+        "productId": 99212,
+        "quantity": 1
       }
     ],
     "userOrderCount": 0,
-    "customerGroupIds": [],
-    "regionId": 0,
-    "countryCode": "",
-    "paymentMethodId": 0,
-    "deliveryMethodId": 0,
+    "customerGroupIds": [
+      4
+    ],
+    "regionId": 9,
+    "countryCode": "GE",
+    "deliveryMethodId": 1,
     "promoCode": "",
     "featureIds": [],
     "featureValueIds": [],
-    "featureValues": [
-      {
-        "id": 0,
-        "value": "",
-        "featureId": 0,
-        "featureType": {}
-      }
-    ],
-    "orderId": 0
+    "featureValues": []
   }
+}
+
+vars:pre-request {
+  baseUrl: http://localhost:4000
 }
 
 example {

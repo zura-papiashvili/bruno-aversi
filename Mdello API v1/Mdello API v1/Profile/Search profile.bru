@@ -1,0 +1,142 @@
+meta {
+  name: Search profile
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/ecommerce/profile/search
+  body: none
+  auth: apikey
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~inUserIds: 
+  ~notInUserIds: 
+  ~verified: 
+  ~active: 
+  ~featuredOn: 
+  ~minItemCount: 
+  ~interestsIn: 
+  ~typeIn: 
+  ~isRandom: 
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/ecommerce/profile/search
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~inUserIds: 
+      ~notInUserIds: 
+      ~verified: 
+      ~active: 
+      ~featuredOn: 
+      ~minItemCount: 
+      ~interestsIn: 
+      ~typeIn: 
+      ~isRandom: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "data": [],
+          "paging": {
+            "total": 0,
+            "limit": 0,
+            "page": 0,
+            "sortBy": "",
+            "sortOrder": 0,
+            "search": ""
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/ecommerce/profile/search
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~inUserIds: 
+      ~notInUserIds: 
+      ~verified: 
+      ~active: 
+      ~featuredOn: 
+      ~minItemCount: 
+      ~interestsIn: 
+      ~typeIn: 
+      ~isRandom: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

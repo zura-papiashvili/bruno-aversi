@@ -1,0 +1,73 @@
+meta {
+  name: Get all order statuses
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/order-statuses
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~name: 
+  ~uniqueCode: 
+  ~type: 
+  ~visibleToCustomer: 
+  ~decrementStock: 
+  ~groupId: 
+  ~color: 
+  ~smsTemplateId: 
+  ~emailTemplateId: 
+  ~createdFromDate: 
+  ~createdToDate: 
+}
+
+example {
+  name: 200 Response
+  description: List of order statuses.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/order-statuses
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~name: 
+      ~uniqueCode: 
+      ~type: 
+      ~visibleToCustomer: 
+      ~decrementStock: 
+      ~groupId: 
+      ~color: 
+      ~smsTemplateId: 
+      ~emailTemplateId: 
+      ~createdFromDate: 
+      ~createdToDate: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

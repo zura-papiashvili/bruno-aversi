@@ -1,0 +1,53 @@
+meta {
+  name: Get an easy offer by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/easy-offers/:id
+  body: none
+  auth: inherit
+}
+
+params:query {
+  customerGroupIds: 
+  ~lang: 
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The easy offer details.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/easy-offers/:id
+    method: GET
+    mode: none
+    params:query: {
+      customerGroupIds: 
+      ~lang: 
+    }
+  
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,65 @@
+meta {
+  name: List change logs with filters and paging
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/change-logs
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~entityType: 
+  ~entityId: 
+  ~actorId: 
+  ~actorType: 
+  ~action: 
+  ~createdFrom: 
+  ~createdTo: 
+}
+
+example {
+  name: 200 Response
+  description: Paged change logs list
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/change-logs
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~entityType: 
+      ~entityId: 
+      ~actorId: 
+      ~actorType: 
+      ~action: 
+      ~createdFrom: 
+      ~createdTo: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

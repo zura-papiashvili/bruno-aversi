@@ -1,0 +1,35 @@
+meta {
+  name: Test endpoint to check Flitt environment variables
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_test/v1/payment/flitt/test-config
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_test/v1/payment/flitt/test-config
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

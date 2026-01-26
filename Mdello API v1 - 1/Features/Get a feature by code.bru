@@ -1,0 +1,93 @@
+meta {
+  name: Get a feature by code
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/features/code/:code
+  body: none
+  auth: inherit
+}
+
+params:path {
+  code: 
+}
+
+example {
+  name: 200 Response
+  description: Feature found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/features/code/:code
+    method: GET
+    mode: none
+    params:path: {
+      code: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "code": "",
+          "displayName": "",
+          "internalName": "",
+          "status": "",
+          "type": "",
+          "sortOrder": 0,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": "",
+          "featureGroup": {},
+          "featureValues": [
+            {}
+          ],
+          "categories": [
+            {}
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Feature not found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/features/code/:code
+    method: GET
+    mode: none
+    params:path: {
+      code: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

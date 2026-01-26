@@ -1,0 +1,162 @@
+meta {
+  name: Update cart offer
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/cart-offers/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "name": "",
+    "description": "",
+    "imageUrl": "",
+    "status": "",
+    "isActive": false,
+    "isHidden": false,
+    "priority": 0,
+    "startsAt": "",
+    "endsAt": "",
+    "perUserLimit": 0,
+    "totalLimit": 0,
+    "allowStacking": false,
+    "discountDays": [],
+    "nthOrderTrigger": 0,
+    "nthUserTrigger": 0,
+    "dailyLimit": 0,
+    "monthlyLimit": 0,
+    "perUserFrequencyOperator": "",
+    "perUserFrequencyValue": 0,
+    "conditions": "",
+    "benefits": [
+      {
+        "type": "",
+        "scope": "",
+        "discountType": "",
+        "salePercent": 0,
+        "fixedAmount": 0,
+        "fixedPrice": 0,
+        "targetPrice": 0,
+        "applyOnListPrice": false,
+        "bundleTotalQuantity": 0,
+        "bundleGetQuantity": 0,
+        "bundleMaxRepeats": 0,
+        "bundleCategoryId": 0,
+        "bundleTieBreaker": "",
+        "productIds": [],
+        "categoryIds": [],
+        "brandIds": [],
+        "giftProductId": 0,
+        "giftQuantity": 0,
+        "giftOptional": false,
+        "freeShipping": false,
+        "freeShippingDeliveryMethodIds": [],
+        "joinCustomerGroupId": 0,
+        "rewardVoucherCode": "",
+        "rewardVoucherAmount": 0,
+        "rewardVoucherPercent": 0,
+        "rewardVoucherExpiresAt": "",
+        "rewardPromoCode": "",
+        "rewardPromoCodeExpiresAt": ""
+      }
+    ],
+    "promoCodes": [
+      {}
+    ]
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/cart-offers/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "imageUrl": "",
+        "status": "",
+        "isActive": false,
+        "isHidden": false,
+        "priority": 0,
+        "startsAt": "",
+        "endsAt": "",
+        "perUserLimit": 0,
+        "totalLimit": 0,
+        "allowStacking": false,
+        "discountDays": [],
+        "nthOrderTrigger": 0,
+        "nthUserTrigger": 0,
+        "dailyLimit": 0,
+        "monthlyLimit": 0,
+        "perUserFrequencyOperator": "",
+        "perUserFrequencyValue": 0,
+        "conditions": "",
+        "benefits": [
+          {
+            "type": "",
+            "scope": "",
+            "discountType": "",
+            "salePercent": 0,
+            "fixedAmount": 0,
+            "fixedPrice": 0,
+            "targetPrice": 0,
+            "applyOnListPrice": false,
+            "bundleTotalQuantity": 0,
+            "bundleGetQuantity": 0,
+            "bundleMaxRepeats": 0,
+            "bundleCategoryId": 0,
+            "bundleTieBreaker": "",
+            "productIds": [],
+            "categoryIds": [],
+            "brandIds": [],
+            "giftProductId": 0,
+            "giftQuantity": 0,
+            "giftOptional": false,
+            "freeShipping": false,
+            "freeShippingDeliveryMethodIds": [],
+            "joinCustomerGroupId": 0,
+            "rewardVoucherCode": "",
+            "rewardVoucherAmount": 0,
+            "rewardVoucherPercent": 0,
+            "rewardVoucherExpiresAt": "",
+            "rewardPromoCode": "",
+            "rewardPromoCodeExpiresAt": ""
+          }
+        ],
+        "promoCodes": [
+          {}
+        ]
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,86 @@
+meta {
+  name: Update cart (admin)
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/carts/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "sessionId": "",
+    "source": "",
+    "customerFullName": "",
+    "customerPhone": "",
+    "customerEmail": "",
+    "deliveryAddress": {},
+    "metadata": {},
+    "promoCode": "",
+    "deliveryMethodId": 0,
+    "items": [
+      {
+        "productId": 0,
+        "quantity": 0,
+        "clientUnitPrice": 0
+      }
+    ],
+    "userId": ""
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/carts/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "sessionId": "",
+        "source": "",
+        "customerFullName": "",
+        "customerPhone": "",
+        "customerEmail": "",
+        "deliveryAddress": {},
+        "metadata": {},
+        "promoCode": "",
+        "deliveryMethodId": 0,
+        "items": [
+          {
+            "productId": 0,
+            "quantity": 0,
+            "clientUnitPrice": 0
+          }
+        ],
+        "userId": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

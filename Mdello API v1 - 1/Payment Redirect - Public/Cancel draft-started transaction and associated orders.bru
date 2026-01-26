@@ -1,0 +1,48 @@
+meta {
+  name: Cancel draft/started transaction and associated orders
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/payment/cancel/:transactionId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  transactionId: 
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/payment/cancel/:transactionId
+    method: POST
+    mode: none
+    params:path: {
+      transactionId: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false
+        }
+      '''
+    }
+  }
+}

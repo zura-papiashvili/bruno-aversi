@@ -1,0 +1,41 @@
+meta {
+  name: Update Content Order
+  type: http
+  seq: 14
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/cms/content/order
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/cms/content/order
+    method: PUT
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false
+        }
+      '''
+    }
+  }
+}

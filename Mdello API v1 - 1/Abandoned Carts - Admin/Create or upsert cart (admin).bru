@@ -1,0 +1,78 @@
+meta {
+  name: Create or upsert cart (admin)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/carts
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "sessionId": "",
+    "source": "",
+    "customerFullName": "",
+    "customerPhone": "",
+    "customerEmail": "",
+    "deliveryAddress": {},
+    "metadata": {},
+    "promoCode": "",
+    "deliveryMethodId": 0,
+    "items": [
+      {
+        "productId": 0,
+        "quantity": 0,
+        "clientUnitPrice": 0
+      }
+    ],
+    "userId": ""
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/carts
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "sessionId": "",
+        "source": "",
+        "customerFullName": "",
+        "customerPhone": "",
+        "customerEmail": "",
+        "deliveryAddress": {},
+        "metadata": {},
+        "promoCode": "",
+        "deliveryMethodId": 0,
+        "items": [
+          {
+            "productId": 0,
+            "quantity": 0,
+            "clientUnitPrice": 0
+          }
+        ],
+        "userId": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

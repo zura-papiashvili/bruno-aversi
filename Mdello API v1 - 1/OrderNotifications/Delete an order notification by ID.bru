@@ -1,0 +1,70 @@
+meta {
+  name: Delete an order notification by ID
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/order-notifications/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/order-notifications/:id
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 204 Response
+  description: The order notification has been successfully deleted.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/order-notifications/:id
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

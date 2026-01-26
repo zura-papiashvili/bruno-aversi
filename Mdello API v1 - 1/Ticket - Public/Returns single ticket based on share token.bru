@@ -1,0 +1,50 @@
+meta {
+  name: Returns single ticket based on share token
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/ticket/shared
+  body: none
+  auth: inherit
+}
+
+params:query {
+  shareToken: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/ticket/shared
+    method: GET
+    mode: none
+    params:query: {
+      shareToken: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "_id": "",
+          "projectId": "",
+          "merchantId": ""
+        }
+      '''
+    }
+  }
+}

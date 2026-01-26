@@ -1,0 +1,67 @@
+meta {
+  name: Get related products based on customer purchase history
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/products/related/from-purchases
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~brandIds: 
+  ~categoryIds: 
+  ~featureValueIds: 
+  ~minPrice: 
+  ~maxPrice: 
+  ~discountRanges: 
+}
+
+example {
+  name: 200 Response
+  description: Related products from purchase history retrieved successfully
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/products/related/from-purchases
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~brandIds: 
+      ~categoryIds: 
+      ~featureValueIds: 
+      ~minPrice: 
+      ~maxPrice: 
+      ~discountRanges: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}

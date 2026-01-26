@@ -1,0 +1,83 @@
+meta {
+  name: Get currently viewing products (customizable window)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/products/currently-viewing
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~minutesAgo: 
+  ~brandIds: 
+  ~categoryIds: 
+  ~featureValueIds: 
+  ~minPrice: 
+  ~maxPrice: 
+  ~discountRanges: 
+}
+
+example {
+  name: 200 Response
+  description: Currently viewing products
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/products/currently-viewing
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~minutesAgo: 
+      ~brandIds: 
+      ~categoryIds: 
+      ~featureValueIds: 
+      ~minPrice: 
+      ~maxPrice: 
+      ~discountRanges: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "product": {},
+            "totalViews": 0,
+            "uniqueViewers": 0,
+            "currentlyViewing": 0,
+            "lastViewedAt": "",
+            "productId": 0,
+            "productName": "",
+            "productImgUrl": "",
+            "price": 0,
+            "listPrice": 0,
+            "offerInfo": {}
+          }
+        ]
+      '''
+    }
+  }
+}

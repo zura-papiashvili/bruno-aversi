@@ -1,0 +1,67 @@
+meta {
+  name: Get all cart offers (public)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/cart-offers
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~name: 
+  ~promoCode: 
+  ~status: 
+  ~isActive: 
+  ~isHidden: 
+  ~startsAtFrom: 
+  ~endsAtTo: 
+  ~customerGroupIds: 
+}
+
+example {
+  name: 200 Response
+  description: List of cart offers.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/cart-offers
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~name: 
+      ~promoCode: 
+      ~status: 
+      ~isActive: 
+      ~isHidden: 
+      ~startsAtFrom: 
+      ~endsAtTo: 
+      ~customerGroupIds: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

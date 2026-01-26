@@ -1,0 +1,42 @@
+meta {
+  name: Remove CMS content user link by id
+  type: http
+  seq: 19
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/cms/content/:id/link/:linkId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  linkId: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/cms/content/:id/link/:linkId
+    method: DELETE
+    mode: none
+    params:path: {
+      linkId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -14,29 +14,32 @@ body:json {
   {
     "lines": [
       {
-        "productId": 0,
-        "quantity": 0
+        "productId": 11405,
+        "quantity": 1
+      },
+      {
+        "productId": 11406,
+        "quantity": 1
+      },
+      {
+        "productId": 11623,
+        "quantity": 1
       }
     ],
     "userOrderCount": 0,
-    "customerGroupIds": [],
-    "regionId": 0,
-    "countryCode": "",
-    "paymentMethodId": 0,
-    "deliveryMethodId": 0,
+    "customerGroupIds": [
+      4
+    ],
+    "countryCode": "GE",
     "promoCode": "",
     "featureIds": [],
     "featureValueIds": [],
-    "featureValues": [
-      {
-        "id": 0,
-        "value": "",
-        "featureId": 0,
-        "featureType": {}
-      }
-    ],
-    "orderId": 0
+    "featureValues": []
   }
+}
+
+vars:pre-request {
+  baseUrl: http://localhost:4000
 }
 
 example {

@@ -1,0 +1,108 @@
+meta {
+  name: List all confirmed bank cards for user. Search is not implemented
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/payment/bankCard
+  body: none
+  auth: apikey
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/payment/bankCard
+    method: GET
+    mode: none
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "data": [
+            {
+              "provider": "",
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "status": "",
+              "mask": "",
+              "name": "",
+              "isDefault": false,
+              "externalCardId": "",
+              "externalTransactionId": "",
+              "transactionId": "",
+              "externalTransactionUrl": "",
+              "merchantId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            }
+          ],
+          "paging": {
+            "total": 0,
+            "limit": 0,
+            "page": 0,
+            "sortBy": "",
+            "sortOrder": 0,
+            "search": ""
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/payment/bankCard
+    method: GET
+    mode: none
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

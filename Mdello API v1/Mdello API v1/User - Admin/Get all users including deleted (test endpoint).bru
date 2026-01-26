@@ -1,0 +1,88 @@
+meta {
+  name: Get all users including deleted (test endpoint)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/auth/user/all-raw
+  body: none
+  auth: apikey
+}
+
+params:query {
+  search: 
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/user/all-raw
+    method: GET
+    mode: none
+    params:query: {
+      search: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/user/all-raw
+    method: GET
+    mode: none
+    params:query: {
+      search: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

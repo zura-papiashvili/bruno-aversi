@@ -1,0 +1,47 @@
+meta {
+  name: Bulk delete feature values
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/feature-values/bulk-delete
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "ids": []
+  }
+}
+
+example {
+  name: 200 Response
+  description: Feature values have been successfully deleted.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/feature-values/bulk-delete
+    method: DELETE
+    mode: json
+    body:json: {
+      {
+        "ids": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

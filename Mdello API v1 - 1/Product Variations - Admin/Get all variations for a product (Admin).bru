@@ -1,0 +1,99 @@
+meta {
+  name: Get all variations for a product (Admin)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/products/:productId/variations
+  body: none
+  auth: inherit
+}
+
+params:path {
+  productId: 
+}
+
+example {
+  name: 200 Response
+  description: Product variations retrieved successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:productId/variations
+    method: GET
+    mode: none
+    params:path: {
+      productId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Unauthorized
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:productId/variations
+    method: GET
+    mode: none
+    params:path: {
+      productId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Product not found
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:productId/variations
+    method: GET
+    mode: none
+    params:path: {
+      productId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

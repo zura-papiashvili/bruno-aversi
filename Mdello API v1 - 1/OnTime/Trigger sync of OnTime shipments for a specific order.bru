@@ -1,0 +1,70 @@
+meta {
+  name: Trigger sync of OnTime shipments for a specific order
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/ontime/orders/:id/sync-status
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Sync scheduled/completed
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/ontime/orders/:id/sync-status
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/ontime/orders/:id/sync-status
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

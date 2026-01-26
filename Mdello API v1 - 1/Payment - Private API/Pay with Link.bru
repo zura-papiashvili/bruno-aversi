@@ -1,0 +1,134 @@
+meta {
+  name: Pay with Link
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/payment/payWithLink
+  body: none
+  auth: apikey
+}
+
+headers {
+  x-private-api-key: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-private-api-key
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api/v1/payment/payWithLink
+    method: POST
+    mode: none
+    headers: {
+      x-private-api-key: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "requiresConfirmation": false,
+          "transactionUrl": "",
+          "transaction": {
+            "provider": "",
+            "id": 0,
+            "externalProjectId": "",
+            "externalUserId": "",
+            "source": "",
+            "externalTransactionId": "",
+            "transactionId": "",
+            "bankCard": {
+              "provider": "",
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "status": "",
+              "mask": "",
+              "name": "",
+              "isDefault": false,
+              "externalCardId": "",
+              "externalTransactionId": "",
+              "transactionId": "",
+              "externalTransactionUrl": "",
+              "merchantId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            },
+            "status": "",
+            "merchantStatus": "",
+            "blockedAmount": 0,
+            "amount": 0,
+            "fee": 0,
+            "feeDiscount": 0,
+            "splitCommission": 0,
+            "finalAmount": 0,
+            "refundAmount": 0,
+            "currency": "",
+            "purchaseUnits": {},
+            "splitPreferrence": [
+              {
+                "amount": 0,
+                "percent": 0,
+                "iban": "",
+                "description": ""
+              }
+            ],
+            "config": {},
+            "isSuccessExecuted": false,
+            "merchantId": "",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api/v1/payment/payWithLink
+    method: POST
+    mode: none
+    headers: {
+      x-private-api-key: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

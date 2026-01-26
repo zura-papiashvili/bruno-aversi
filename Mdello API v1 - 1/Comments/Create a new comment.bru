@@ -1,0 +1,96 @@
+meta {
+  name: Create a new comment
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/comments
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "entityType": "",
+    "entityId": 0,
+    "content": ""
+  }
+}
+
+example {
+  name: 201 Response
+  description: Comment created successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/comments
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "entityType": "",
+        "entityId": 0,
+        "content": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "entityType": "",
+          "entityId": 0,
+          "userId": "",
+          "content": "",
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/comments
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "entityType": "",
+        "entityId": 0,
+        "content": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

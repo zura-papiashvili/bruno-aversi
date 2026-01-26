@@ -1,0 +1,97 @@
+meta {
+  name: Find locations in OnTime
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/ontime/locations/search
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "addressLine1": "",
+    "city": "",
+    "companyName": "",
+    "contactName": "",
+    "country": "",
+    "email": "",
+    "postalCode": "",
+    "state": ""
+  }
+}
+
+example {
+  name: 200 Response
+  description: List of location GUIDs
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/ontime/locations/search
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "addressLine1": "",
+        "city": "",
+        "companyName": "",
+        "contactName": "",
+        "country": "",
+        "email": "",
+        "postalCode": "",
+        "state": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/ontime/locations/search
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "addressLine1": "",
+        "city": "",
+        "companyName": "",
+        "contactName": "",
+        "country": "",
+        "email": "",
+        "postalCode": "",
+        "state": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

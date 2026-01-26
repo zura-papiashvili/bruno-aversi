@@ -1,0 +1,102 @@
+meta {
+  name: Delete an image from a product
+  type: http
+  seq: 10
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+  imageId: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+      imageId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 204 Response
+  description: Image deleted from product.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+      imageId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/:imageId
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+      imageId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -16,18 +16,23 @@ params:path {
 
 body:json {
   {
-    "uniqueCode": "",
-    "name": "",
-    "type": "",
+    "uniqueCode": "refunded",
+    "name": "თანხა დაბრუნებულია",
+    "type": "SECONDARY",
     "visibleToCustomer": false,
-    "color": "",
     "decrementStock": false,
-    "smsTemplateId": 0,
-    "emailTemplateId": 0,
-    "groupId": 0,
-    "triggerRefund": false,
-    "completePreauthorization": false,
-    "triggerFullRefund": false
+    "color": "#603d66",
+    "groupId": 7,
+    "notifications": [
+      {
+        "notifyUser": false,
+        "notifyAdmin": false,
+        "sendEmail": false,
+        "sendSms": false,
+        "sendWeb": false,
+        "text": ""
+      }
+    ]
   }
 }
 

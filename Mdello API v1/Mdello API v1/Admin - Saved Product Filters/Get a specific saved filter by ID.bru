@@ -1,0 +1,130 @@
+meta {
+  name: Get a specific saved filter by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Saved filter details
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "filters": {},
+          "admin": {
+            "id": 0,
+            "email": "",
+            "password": "",
+            "firstName": "",
+            "lastName": "",
+            "fullName": "",
+            "isEmailVerified": false,
+            "countryCode": "",
+            "roles": [
+              {
+                "adminRoleId": 0,
+                "externalProjectId": "",
+                "adminId": 0,
+                "roleId": 0,
+                "role": {
+                  "id": {},
+                  "externalProjectId": "",
+                  "name": "",
+                  "permissions": [
+                    {
+                      "id": 0,
+                      "resource": "",
+                      "verb": "",
+                      "createdAt": ""
+                    }
+                  ],
+                  "createdAt": ""
+                },
+                "admin": ""
+              }
+            ],
+            "preferences": [
+              {
+                "id": 0,
+                "key": "",
+                "value": {},
+                "adminId": 0,
+                "admin": "",
+                "createdAt": "",
+                "updatedAt": ""
+              }
+            ],
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          "description": "",
+          "shared": false,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Saved filter not found
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-product-filters/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,97 @@
+meta {
+  name: Get all categories
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/product-categories
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~name: 
+  ~categoryIds: 
+  ~parentId: 
+  ~status: 
+  ~type: 
+  ~isPurchasable: 
+  ~enableAddToCart: 
+  ~enableAddToWishlist: 
+  ~metaTitle: 
+  ~withoutParent: 
+}
+
+example {
+  name: 200 Response
+  description: List of categories.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/product-categories
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~name: 
+      ~categoryIds: 
+      ~parentId: 
+      ~status: 
+      ~type: 
+      ~isPurchasable: 
+      ~enableAddToCart: 
+      ~enableAddToWishlist: 
+      ~metaTitle: 
+      ~withoutParent: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "data": [
+            {
+              "id": 0,
+              "name": "",
+              "parent": "",
+              "sortOrder": 0,
+              "mainCategoryProducts": [],
+              "products": [],
+              "iconUrl": "",
+              "status": "",
+              "deliveryMethods": [],
+              "paymentMethods": [],
+              "isPurchasable": false,
+              "enableAddToCart": false,
+              "enableAddToWishlist": false,
+              "metaTitle": "",
+              "metaDescription": "",
+              "metaKeywords": [],
+              "customerGroups": []
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

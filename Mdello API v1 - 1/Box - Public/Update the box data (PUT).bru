@@ -1,0 +1,113 @@
+meta {
+  name: Update the box data (PUT)
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api_public/v1/box/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "type": "",
+    "key": "",
+    "data": {},
+    "metadata": {},
+    "isAvailableAnonymously": false
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/box/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "type": "",
+        "key": "",
+        "data": {},
+        "metadata": {},
+        "isAvailableAnonymously": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "_id": "",
+          "project": "",
+          "user": "",
+          "type": "",
+          "key": "",
+          "data": {},
+          "metadata": {},
+          "accessKey": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response
+  description: Box not found or can't be deleted
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/box/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "type": "",
+        "key": "",
+        "data": {},
+        "metadata": {},
+        "isAvailableAnonymously": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,67 @@
+meta {
+  name: Get features by category
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/features/category/:categoryId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  categoryId: 
+}
+
+example {
+  name: 200 Response
+  description: List of features for the category.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/features/category/:categoryId
+    method: GET
+    mode: none
+    params:path: {
+      categoryId: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "id": 0,
+            "code": "",
+            "displayName": "",
+            "internalName": "",
+            "status": "",
+            "type": "",
+            "sortOrder": 0,
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": "",
+            "featureGroup": {},
+            "featureValues": [
+              {}
+            ],
+            "categories": [
+              {}
+            ]
+          }
+        ]
+      '''
+    }
+  }
+}

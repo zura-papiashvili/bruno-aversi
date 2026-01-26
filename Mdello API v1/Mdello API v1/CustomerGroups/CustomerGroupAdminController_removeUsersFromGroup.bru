@@ -1,0 +1,54 @@
+meta {
+  name: CustomerGroupAdminController_removeUsersFromGroup
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/customer-groups/:id/remove-users
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "userIds": []
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/customer-groups/:id/remove-users
+    method: POST
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "userIds": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

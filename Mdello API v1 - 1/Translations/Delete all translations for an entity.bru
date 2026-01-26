@@ -1,0 +1,45 @@
+meta {
+  name: Delete all translations for an entity
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/translations/:entityType/:entityId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  entityType: 
+  entityId: 
+}
+
+example {
+  name: 200 Response
+  description: All translations deleted
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/translations/:entityType/:entityId
+    method: DELETE
+    mode: none
+    params:path: {
+      entityType: 
+      entityId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

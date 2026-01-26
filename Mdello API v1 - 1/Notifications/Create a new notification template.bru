@@ -1,0 +1,66 @@
+meta {
+  name: Create a new notification template
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/notifications/templates
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "type": "",
+    "name": "",
+    "subject": "",
+    "body": ""
+  }
+}
+
+example {
+  name: 201 Response
+  description: The created notification template
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/notifications/templates
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "type": "",
+        "name": "",
+        "subject": "",
+        "body": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "type": "",
+          "name": "",
+          "subject": "",
+          "body": "",
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}

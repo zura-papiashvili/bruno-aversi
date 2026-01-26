@@ -1,0 +1,135 @@
+meta {
+  name: List all users raw
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/auth/user/all-raw?search=599070609&projectId=68554349f4ffd2b4f4357925
+  body: none
+  auth: apikey
+}
+
+params:query {
+  search: 599070609
+  projectId: 68554349f4ffd2b4f4357925
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~customerGroupIds: 
+  ~isEmailVerified: 
+  ~isPhoneVerified: 
+  ~firstName: 
+  ~lastName: 
+  ~email: 
+  ~phone: 
+  ~zoneIds: 
+  ~regionIds: 
+  ~isVerified: 
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+vars:pre-request {
+  baseUrl: https://aversi-api-x9d821.noxtton.com
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/user
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~customerGroupIds: 
+      ~isEmailVerified: 
+      ~isPhoneVerified: 
+      ~firstName: 
+      ~lastName: 
+      ~email: 
+      ~phone: 
+      ~zoneIds: 
+      ~regionIds: 
+      ~isVerified: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/user
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~customerGroupIds: 
+      ~isEmailVerified: 
+      ~isPhoneVerified: 
+      ~firstName: 
+      ~lastName: 
+      ~email: 
+      ~phone: 
+      ~zoneIds: 
+      ~regionIds: 
+      ~isVerified: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

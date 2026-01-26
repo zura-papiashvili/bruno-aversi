@@ -1,0 +1,106 @@
+meta {
+  name: Send a notification to a single recipient
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/notifications/send
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "templateName": "",
+    "recipient": "",
+    "params": {}
+  }
+}
+
+example {
+  name: 200 Response
+  description: Notification sent successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/notifications/send
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "templateName": "",
+        "recipient": "",
+        "params": {}
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "templateId": 0,
+          "template": {
+            "id": 0,
+            "type": "",
+            "name": "",
+            "subject": "",
+            "body": "",
+            "createdAt": "",
+            "updatedAt": "",
+            "deletedAt": ""
+          },
+          "recipient": "",
+          "channel": "",
+          "status": "",
+          "payload": {},
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/notifications/send
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "templateName": "",
+        "recipient": "",
+        "params": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

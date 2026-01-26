@@ -1,0 +1,116 @@
+meta {
+  name: Reorder product images
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/products/:id/images/reorder
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "imageIds": []
+  }
+}
+
+example {
+  name: 200 Response
+  description: Product images reordered successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/reorder
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "imageIds": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "id": 0,
+            "product": "",
+            "cmsImage": {
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "originalFileName": "",
+              "extension": "",
+              "fileName": "",
+              "mimetype": "",
+              "size": 0,
+              "width": 0,
+              "height": 0,
+              "url": "",
+              "externalId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            },
+            "isMain": false,
+            "sortOrder": 0
+          }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/:id/images/reorder
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "imageIds": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

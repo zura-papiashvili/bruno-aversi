@@ -1,0 +1,76 @@
+meta {
+  name: Create or update a public cart
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/carts/upsert
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "sessionId": "",
+    "source": "",
+    "customerFullName": "",
+    "customerPhone": "",
+    "customerEmail": "",
+    "deliveryAddress": {},
+    "metadata": {},
+    "promoCode": "",
+    "deliveryMethodId": 0,
+    "items": [
+      {
+        "productId": 0,
+        "quantity": 0,
+        "clientUnitPrice": 0
+      }
+    ]
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/carts/upsert
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "sessionId": "",
+        "source": "",
+        "customerFullName": "",
+        "customerPhone": "",
+        "customerEmail": "",
+        "deliveryAddress": {},
+        "metadata": {},
+        "promoCode": "",
+        "deliveryMethodId": 0,
+        "items": [
+          {
+            "productId": 0,
+            "quantity": 0,
+            "clientUnitPrice": 0
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

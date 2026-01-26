@@ -12,12 +12,17 @@ get {
 
 headers {
   x-session-id: {{apiKey}}
+  x-private-api-key: eaba78b7b55c3e8f3e39f47359647dd01b112c55342257a4
 }
 
 auth:apikey {
   key: x-session-id
   value: {{apiKey}}
   placement: header
+}
+
+vars:pre-request {
+  baseUrl: https://aversi-api-x9d821.noxtton.com
 }
 
 example {

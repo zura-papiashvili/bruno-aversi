@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/api_public/v1/features/filters
+  url: {{baseUrl}}/api_public/v1/features/filters?categoryId=708
   body: none
   auth: apikey
 }
 
 params:query {
-  ~categoryIds: 
-  ~offerIds: 
+  categoryId: 708
+  ~offerIds: 52
   ~cartOfferIds: 
 }
 
@@ -24,6 +24,11 @@ auth:apikey {
   key: x-api-key
   value: {{apiKey}}
   placement: header
+}
+
+vars:pre-request {
+  baseUrl: http://localhost:4000
+  apiKey: d94339fae21270915c1004d94720d413df920fdbfc618d88
 }
 
 example {

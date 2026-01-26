@@ -1,0 +1,87 @@
+meta {
+  name: Get a feature value by code
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/feature-values/code/:code
+  body: none
+  auth: inherit
+}
+
+params:path {
+  code: 
+}
+
+example {
+  name: 200 Response
+  description: Feature value found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/feature-values/code/:code
+    method: GET
+    mode: none
+    params:path: {
+      code: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "value": "",
+          "code": "",
+          "sortOrder": 0,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": "",
+          "feature": {},
+          "productFeatureValues": [
+            {}
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Feature value not found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/feature-values/code/:code
+    method: GET
+    mode: none
+    params:path: {
+      code: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,57 @@
+meta {
+  name: Get a category by ID (published or hidden)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/product-categories/:id
+  body: none
+  auth: inherit
+}
+
+params:query {
+  includeProducts: 
+  page: 
+  pageSize: 
+  ~lang: 
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The category details.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/product-categories/:id
+    method: GET
+    mode: none
+    params:query: {
+      includeProducts: 
+      page: 
+      pageSize: 
+      ~lang: 
+    }
+  
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

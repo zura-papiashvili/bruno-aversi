@@ -1,0 +1,71 @@
+meta {
+  name: Get all variations for a product (Public)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/products/:productId/variations
+  body: none
+  auth: inherit
+}
+
+params:path {
+  productId: 
+}
+
+example {
+  name: 200 Response
+  description: Product variations retrieved successfully
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/products/:productId/variations
+    method: GET
+    mode: none
+    params:path: {
+      productId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Product not found
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/products/:productId/variations
+    method: GET
+    mode: none
+    params:path: {
+      productId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

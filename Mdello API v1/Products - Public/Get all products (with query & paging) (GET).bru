@@ -5,14 +5,16 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/api_public/v1/products
+  url: {{baseUrl}}/api_public/v1/products?categoryIds=708
   body: none
   auth: inherit
 }
 
 params:query {
-  ~limit: 
-  ~page: 
+  categoryIds: 708
+  ~easyOfferIds: 52
+  ~limit: 24
+  ~page: 1
   ~sortBy: 
   ~sortOrder: 
   ~search: 
@@ -20,7 +22,6 @@ params:query {
   ~discountRanges: 
   ~createdFrom: 
   ~createdTo: 
-  ~categoryIds: 
   ~name: 
   ~code: 
   ~categoryId: 
@@ -40,12 +41,15 @@ params:query {
   ~variationGroupId: 
   ~internalCode: 
   ~easyOfferId: 
-  ~easyOfferIds: 
   ~easyOfferBannerId: 
   ~offerSectionKey: 
   ~cartOfferIds: 
   ~ids: 
   ~lang: 
+}
+
+vars:pre-request {
+  baseUrl: http://localhost:4000
 }
 
 example {

@@ -1,0 +1,59 @@
+meta {
+  name: Create a new order notification
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/order-notifications
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "orderStatusId": 0,
+    "notifyUser": false,
+    "notifyAdmin": false,
+    "sendEmail": false,
+    "sendSms": false,
+    "sendWeb": false,
+    "text": ""
+  }
+}
+
+example {
+  name: 201 Response
+  description: The order notification has been successfully created.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/order-notifications
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "orderStatusId": 0,
+        "notifyUser": false,
+        "notifyAdmin": false,
+        "sendEmail": false,
+        "sendSms": false,
+        "sendWeb": false,
+        "text": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

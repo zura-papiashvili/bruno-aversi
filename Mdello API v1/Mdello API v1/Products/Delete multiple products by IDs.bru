@@ -1,0 +1,61 @@
+meta {
+  name: Delete multiple products by IDs
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/products/bulk-delete
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: Products have been successfully deleted.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/bulk-delete
+    method: DELETE
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/bulk-delete
+    method: DELETE
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,43 @@
+meta {
+  name: Get price set by name
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/ontime/price-sets/by-name/:name
+  body: none
+  auth: inherit
+}
+
+params:path {
+  name: 
+}
+
+example {
+  name: 200 Response
+  description: PriceSet payload
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/ontime/price-sets/by-name/:name
+    method: GET
+    mode: none
+    params:path: {
+      name: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

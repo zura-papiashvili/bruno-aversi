@@ -1,0 +1,90 @@
+meta {
+  name: Generate delivery method recommendations for public checkout
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/order-assignments/recommend
+  body: json
+  auth: inherit
+}
+
+params:query {
+  ~lang: 
+}
+
+body:json {
+  {
+    "products": [
+      {
+        "productId": 0,
+        "quantity": 0
+      }
+    ],
+    "giftProducts": [
+      {
+        "productId": 0,
+        "quantity": 0,
+        "offerId": 0
+      }
+    ],
+    "customerRegionId": 0,
+    "customerZoneId": 0,
+    "customerLatitude": 0,
+    "customerLongitude": 0,
+    "deliveryMethodTypes": [],
+    "useGoogleMapsDistance": false
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/order-assignments/recommend
+    method: POST
+    mode: json
+    params:query: {
+      ~lang: 
+    }
+  
+    body:json: {
+      {
+        "products": [
+          {
+            "productId": 0,
+            "quantity": 0
+          }
+        ],
+        "giftProducts": [
+          {
+            "productId": 0,
+            "quantity": 0,
+            "offerId": 0
+          }
+        ],
+        "customerRegionId": 0,
+        "customerZoneId": 0,
+        "customerLatitude": 0,
+        "customerLongitude": 0,
+        "deliveryMethodTypes": [],
+        "useGoogleMapsDistance": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,42 @@
+meta {
+  name: Convert my cart to order (link existing order)
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api_private/v1/carts/:id/convert
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/carts/:id/convert
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

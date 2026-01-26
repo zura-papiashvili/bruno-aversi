@@ -1,0 +1,43 @@
+meta {
+  name: Get location by ID
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/ontime/locations/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Location payload
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/ontime/locations/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

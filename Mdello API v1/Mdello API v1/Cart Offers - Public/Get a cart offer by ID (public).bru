@@ -1,0 +1,43 @@
+meta {
+  name: Get a cart offer by ID (public)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/cart-offers/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The cart offer details.
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/cart-offers/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

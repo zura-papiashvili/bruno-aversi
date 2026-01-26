@@ -1,0 +1,177 @@
+meta {
+  name: Update a feature
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/features/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "code": "",
+    "displayName": "",
+    "internalName": "",
+    "status": "",
+    "type": "",
+    "sortOrder": 0,
+    "isRequired": false,
+    "featureGroupId": 0,
+    "categoryIds": []
+  }
+}
+
+example {
+  name: 200 Response
+  description: Feature has been successfully updated.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/features/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "code": "",
+        "displayName": "",
+        "internalName": "",
+        "status": "",
+        "type": "",
+        "sortOrder": 0,
+        "isRequired": false,
+        "featureGroupId": 0,
+        "categoryIds": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "code": "",
+          "displayName": "",
+          "internalName": "",
+          "status": "",
+          "type": "",
+          "sortOrder": 0,
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": "",
+          "featureGroup": {},
+          "featureValues": [
+            {}
+          ],
+          "categories": [
+            {}
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Feature not found.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/features/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "code": "",
+        "displayName": "",
+        "internalName": "",
+        "status": "",
+        "type": "",
+        "sortOrder": 0,
+        "isRequired": false,
+        "featureGroupId": 0,
+        "categoryIds": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 409 Response
+  description: Feature with this code already exists.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/features/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "code": "",
+        "displayName": "",
+        "internalName": "",
+        "status": "",
+        "type": "",
+        "sortOrder": 0,
+        "isRequired": false,
+        "featureGroupId": 0,
+        "categoryIds": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

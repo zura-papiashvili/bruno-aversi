@@ -1,0 +1,55 @@
+meta {
+  name: Refund an order (full or partial)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/orders/:id/refund
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "amount": 0
+  }
+}
+
+example {
+  name: 201 Response
+  description: Refund created and processed successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/orders/:id/refund
+    method: POST
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "amount": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

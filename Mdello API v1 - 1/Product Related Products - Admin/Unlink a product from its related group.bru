@@ -1,0 +1,146 @@
+meta {
+  name: Unlink a product from its related group
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/products/unlink-related
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "productId": 0
+  }
+}
+
+example {
+  name: 200 Response
+  description: Product unlinked successfully from related group
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/unlink-related
+    method: DELETE
+    mode: json
+    body:json: {
+      {
+        "productId": 0
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "message": "",
+          "relatedGroupId": 0,
+          "groupProductIds": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response
+  description: Product is not part of any related group
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/unlink-related
+    method: DELETE
+    mode: json
+    body:json: {
+      {
+        "productId": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Unauthorized
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/unlink-related
+    method: DELETE
+    mode: json
+    body:json: {
+      {
+        "productId": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Product not found
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/unlink-related
+    method: DELETE
+    mode: json
+    body:json: {
+      {
+        "productId": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

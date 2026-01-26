@@ -1,0 +1,35 @@
+meta {
+  name: Get Project CMS Structure
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_public/v1/cms/structure
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/cms/structure
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,82 @@
+meta {
+  name: Update a brand
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/brands/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "name": "",
+    "description": "",
+    "color": "",
+    "logoUrl": "",
+    "selectedProductIds": [],
+    "promoted": false
+  }
+}
+
+example {
+  name: 200 Response
+  description: The brand has been successfully updated.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/brands/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "color": "",
+        "logoUrl": "",
+        "selectedProductIds": [],
+        "promoted": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "description": "",
+          "color": "",
+          "logoUrl": "",
+          "erpId": 0,
+          "sortOrder": 0,
+          "promoted": false,
+          "selectedProducts": [],
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}

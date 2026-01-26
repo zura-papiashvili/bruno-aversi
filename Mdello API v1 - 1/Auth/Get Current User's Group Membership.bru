@@ -1,0 +1,69 @@
+meta {
+  name: Get Current User's Group Membership
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/auth/group-membership
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: User group membership retrieved successfully
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/auth/group-membership
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "userId": "",
+          "customerGroup": "",
+          "memberSince": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Unauthorized
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/auth/group-membership
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,56 @@
+meta {
+  name: Toggle the status of a region by ID
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/regions/:id/toggle-status
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The region with updated status.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/regions/:id/toggle-status
+    method: PUT
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "code": "",
+          "country": "",
+          "is_active": false,
+          "priority": 0,
+          "createdAt": "",
+          "updatedAt": ""
+        }
+      '''
+    }
+  }
+}
