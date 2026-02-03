@@ -1,0 +1,43 @@
+meta {
+  name: Get a zone config by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/delivery-method-zone-configs/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Zone config details.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-method-zone-configs/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

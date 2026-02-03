@@ -1,0 +1,97 @@
+meta {
+  name: Get User's Group Membership
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/auth/user/:id/group-membership
+  body: none
+  auth: apikey
+}
+
+params:path {
+  id: 
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  description: User group membership retrieved successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/user/:id/group-membership
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "userId": "",
+          "customerGroup": "",
+          "memberSince": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/auth/user/:id/group-membership
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

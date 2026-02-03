@@ -1,0 +1,108 @@
+meta {
+  name: PaymentMethodAdminController_update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/payment-methods/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "name": "",
+    "schedule": {},
+    "provider": "",
+    "preferredPaymentMethod": [],
+    "tbcPaymentMethods": [],
+    "isActive": false,
+    "minOrderAmount": 0,
+    "maxOrderAmount": 0,
+    "countryCodes": [],
+    "categoryIds": [],
+    "productIds": [],
+    "customerGroupIds": [],
+    "regionIds": [],
+    "zoneIds": [],
+    "deliveryMethodIds": [],
+    "useEmbeddedCheckout": false,
+    "designId": "",
+    "flittPaymentMethods": [],
+    "flittDisabledMethods": [],
+    "flittWalletMethods": [],
+    "preauthorization": false,
+    "allowCardSaving": false,
+    "statusMappings": [
+      {
+        "merchantStatus": "",
+        "orderStatusId": 0
+      }
+    ]
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/payment-methods/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "schedule": {},
+        "provider": "",
+        "preferredPaymentMethod": [],
+        "tbcPaymentMethods": [],
+        "isActive": false,
+        "minOrderAmount": 0,
+        "maxOrderAmount": 0,
+        "countryCodes": [],
+        "categoryIds": [],
+        "productIds": [],
+        "customerGroupIds": [],
+        "regionIds": [],
+        "zoneIds": [],
+        "deliveryMethodIds": [],
+        "useEmbeddedCheckout": false,
+        "designId": "",
+        "flittPaymentMethods": [],
+        "flittDisabledMethods": [],
+        "flittWalletMethods": [],
+        "preauthorization": false,
+        "allowCardSaving": false,
+        "statusMappings": [
+          {
+            "merchantStatus": "",
+            "orderStatusId": 0
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

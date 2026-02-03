@@ -1,0 +1,103 @@
+meta {
+  name: Import product features and variation groups from Excel file
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/products/import/features
+  body: none
+  auth: inherit
+}
+
+params:query {
+  columnMapping: 
+  createFeatureValues: 
+  createFeatures: 
+  clearExistingFeatureValues: 
+  startRow: 
+}
+
+example {
+  name: 201 Response
+  description: Products features imported successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/import/features
+    method: POST
+    mode: none
+    params:query: {
+      columnMapping: 
+      createFeatureValues: 
+      createFeatures: 
+      clearExistingFeatureValues: 
+      startRow: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "data": {
+            "processed": 0,
+            "updated": 0,
+            "featuresCreated": 0,
+            "featureValuesCreated": 0,
+            "variationGroupsCreated": 0,
+            "errors": [
+              {
+                "row": 0,
+                "error": "",
+                "data": {}
+              }
+            ]
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/import/features
+    method: POST
+    mode: none
+    params:query: {
+      columnMapping: 
+      createFeatureValues: 
+      createFeatures: 
+      clearExistingFeatureValues: 
+      startRow: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

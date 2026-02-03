@@ -1,0 +1,43 @@
+meta {
+  name: Download CSV of products attached to an easy offer (erpId, name)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/easy-offers/:id/products/export/csv
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: CSV file with product erpId and name columns
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/easy-offers/:id/products/export/csv
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

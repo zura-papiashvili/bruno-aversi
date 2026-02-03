@@ -1,0 +1,183 @@
+meta {
+  name: Pay with link. Requires checking transaction status for confirmation
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api_private/v1/payment/payWithLink
+  body: json
+  auth: apikey
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+body:json {
+  {
+    "tbcPaymentMethods": [],
+    "loanConfig": {},
+    "successURL": "",
+    "errorURL": "",
+    "merchantId": "",
+    "isTestTransaction": false,
+    "paymentMethodId": 0,
+    "designId": "",
+    "flittPaymentMethods": [],
+    "flittDisabledMethods": [],
+    "flittWalletMethods": []
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/payment/payWithLink
+    method: POST
+    mode: json
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "tbcPaymentMethods": [],
+        "loanConfig": {},
+        "successURL": "",
+        "errorURL": "",
+        "merchantId": "",
+        "isTestTransaction": false,
+        "paymentMethodId": 0,
+        "designId": "",
+        "flittPaymentMethods": [],
+        "flittDisabledMethods": [],
+        "flittWalletMethods": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "requiresConfirmation": false,
+          "transactionUrl": "",
+          "transaction": {
+            "provider": "",
+            "id": 0,
+            "externalProjectId": "",
+            "externalUserId": "",
+            "orderId": 0,
+            "source": "",
+            "externalTransactionId": "",
+            "transactionId": "",
+            "bankCard": {
+              "provider": "",
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "status": "",
+              "mask": "",
+              "name": "",
+              "isDefault": false,
+              "externalCardId": "",
+              "externalTransactionId": "",
+              "transactionId": "",
+              "externalTransactionUrl": "",
+              "merchantId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            },
+            "status": "",
+            "merchantStatus": "",
+            "blockedAmount": 0,
+            "amount": 0,
+            "fee": 0,
+            "feeDiscount": 0,
+            "splitCommission": 0,
+            "finalAmount": 0,
+            "refundAmount": 0,
+            "currency": "",
+            "purchaseUnits": {},
+            "splitPreferrence": [
+              {
+                "amount": 0,
+                "percent": 0,
+                "iban": "",
+                "description": ""
+              }
+            ],
+            "config": {},
+            "isSuccessExecuted": false,
+            "merchantId": "",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/payment/payWithLink
+    method: POST
+    mode: json
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  
+    body:json: {
+      {
+        "tbcPaymentMethods": [],
+        "loanConfig": {},
+        "successURL": "",
+        "errorURL": "",
+        "merchantId": "",
+        "isTestTransaction": false,
+        "paymentMethodId": 0,
+        "designId": "",
+        "flittPaymentMethods": [],
+        "flittDisabledMethods": [],
+        "flittWalletMethods": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

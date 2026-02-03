@@ -1,0 +1,36 @@
+meta {
+  name: Download CSV template with all products (erpId, name)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/easy-offers/products/export/csv
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: CSV file with all product erpId and name columns
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/easy-offers/products/export/csv
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,55 @@
+meta {
+  name: Check if a combination is enabled
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/delivery-method-zone-configs/enabled/:deliveryMethodId
+  body: none
+  auth: inherit
+}
+
+params:query {
+  zoneId: 
+  dayOptionCode: 
+  pharmacyMode: 
+}
+
+params:path {
+  deliveryMethodId: 
+}
+
+example {
+  name: 200 Response
+  description: Enabled status.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-method-zone-configs/enabled/:deliveryMethodId
+    method: GET
+    mode: none
+    params:query: {
+      zoneId: 
+      dayOptionCode: 
+      pharmacyMode: 
+    }
+  
+    params:path: {
+      deliveryMethodId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

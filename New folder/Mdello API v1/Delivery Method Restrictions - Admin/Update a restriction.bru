@@ -1,0 +1,71 @@
+meta {
+  name: Update a restriction
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/delivery-method-restrictions/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "deliveryMethodId": 0,
+    "productId": 0,
+    "brandId": 0,
+    "categoryId": 0,
+    "allowedDayOptions": [],
+    "allowedPharmacyModes": [],
+    "isBlocked": false,
+    "priority": 0,
+    "isActive": false
+  }
+}
+
+example {
+  name: 200 Response
+  description: Restriction updated successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-method-restrictions/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "deliveryMethodId": 0,
+        "productId": 0,
+        "brandId": 0,
+        "categoryId": 0,
+        "allowedDayOptions": [],
+        "allowedPharmacyModes": [],
+        "isBlocked": false,
+        "priority": 0,
+        "isActive": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

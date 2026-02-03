@@ -1,0 +1,192 @@
+meta {
+  name: Export products to CSV
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/products/export/csv
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~includeFields: 
+  ~excludeFields: 
+  ~includeRelations: 
+  ~delimiter: 
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~asOneProduct: 
+  ~discountRanges: 
+  ~createdFrom: 
+  ~createdTo: 
+  ~categoryIds: 
+  ~name: 
+  ~code: 
+  ~categoryId: 
+  ~subcategoryId: 
+  ~featureValueIds: 
+  ~status: 
+  ~minPrice: 
+  ~maxPrice: 
+  ~minQuantity: 
+  ~maxQuantity: 
+  ~minTotalStock: 
+  ~maxTotalStock: 
+  ~weight: 
+  ~minOrders: 
+  ~maxOrders: 
+  ~stockAvailable: 
+  ~brandId: 
+  ~brandIds: 
+  ~variationGroupId: 
+  ~internalCode: 
+  ~easyOfferId: 
+  ~easyOfferIds: 
+  ~easyOfferBannerId: 
+  ~offerSectionKey: 
+  ~cartOfferIds: 
+  ~ids: 
+}
+
+example {
+  name: 200 Response
+  description: CSV file with products data
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/export/csv
+    method: GET
+    mode: none
+    params:query: {
+      ~includeFields: 
+      ~excludeFields: 
+      ~includeRelations: 
+      ~delimiter: 
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~asOneProduct: 
+      ~discountRanges: 
+      ~createdFrom: 
+      ~createdTo: 
+      ~categoryIds: 
+      ~name: 
+      ~code: 
+      ~categoryId: 
+      ~subcategoryId: 
+      ~featureValueIds: 
+      ~status: 
+      ~minPrice: 
+      ~maxPrice: 
+      ~minQuantity: 
+      ~maxQuantity: 
+      ~minTotalStock: 
+      ~maxTotalStock: 
+      ~weight: 
+      ~minOrders: 
+      ~maxOrders: 
+      ~stockAvailable: 
+      ~brandId: 
+      ~brandIds: 
+      ~variationGroupId: 
+      ~internalCode: 
+      ~easyOfferId: 
+      ~easyOfferIds: 
+      ~easyOfferBannerId: 
+      ~offerSectionKey: 
+      ~cartOfferIds: 
+      ~ids: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: text/csv
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/products/export/csv
+    method: GET
+    mode: none
+    params:query: {
+      ~includeFields: 
+      ~excludeFields: 
+      ~includeRelations: 
+      ~delimiter: 
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~asOneProduct: 
+      ~discountRanges: 
+      ~createdFrom: 
+      ~createdTo: 
+      ~categoryIds: 
+      ~name: 
+      ~code: 
+      ~categoryId: 
+      ~subcategoryId: 
+      ~featureValueIds: 
+      ~status: 
+      ~minPrice: 
+      ~maxPrice: 
+      ~minQuantity: 
+      ~maxQuantity: 
+      ~minTotalStock: 
+      ~maxTotalStock: 
+      ~weight: 
+      ~minOrders: 
+      ~maxOrders: 
+      ~stockAvailable: 
+      ~brandId: 
+      ~brandIds: 
+      ~variationGroupId: 
+      ~internalCode: 
+      ~easyOfferId: 
+      ~easyOfferIds: 
+      ~easyOfferBannerId: 
+      ~offerSectionKey: 
+      ~cartOfferIds: 
+      ~ids: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

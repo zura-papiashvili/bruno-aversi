@@ -1,0 +1,55 @@
+meta {
+  name: create order
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{mdelo}}/api_public/v2/ecommerce/order
+  body: json
+  auth: inherit
+}
+
+headers {
+  x-api-key: 590bb969c73899444c7552ea4abd451fca93b92f82149d20
+}
+
+body:json {
+  {
+    "items": [
+      {
+        "_id": "135360",
+        "quantity": 1
+      }
+    ],
+    "payment": {
+      "paymentProvider": "STRIPE",
+      "successURL": "https://academyofdigitalindustries.cz/courses/ai-pro-manazery/registration?success",
+      "errorURL": "https://academyofdigitalindustries.cz/courses/ai-pro-manazery/registration?failed"
+    },
+    "data": {
+      "metadata": {
+        "lecturerName": "Jan Bouda",
+        "originalCourseTitle": "AI pro manažery",
+        "firstName": "test",
+        "lastName": "test",
+        "email": "test1214@gmail.com",
+        "phoneNumber": "+420121212212",
+        "dateOfBirth": "",
+        "city": "test",
+        "courseStartingDate": 1771056000000,
+        "courseDuration": "1",
+        "country": "cz"
+      }
+    }
+  }
+}
+
+vars:pre-request {
+  mdelo: http://localhost:4001
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

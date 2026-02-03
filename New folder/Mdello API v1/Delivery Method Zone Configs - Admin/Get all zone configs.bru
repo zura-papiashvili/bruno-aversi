@@ -1,0 +1,61 @@
+meta {
+  name: Get all zone configs
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/delivery-method-zone-configs
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~deliveryMethodId: 
+  ~zoneId: 
+  ~dayOptionCode: 
+  ~pharmacyMode: 
+  ~isEnabled: 
+}
+
+example {
+  name: 200 Response
+  description: List of zone configs.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-method-zone-configs
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~deliveryMethodId: 
+      ~zoneId: 
+      ~dayOptionCode: 
+      ~pharmacyMode: 
+      ~isEnabled: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,82 @@
+meta {
+  name: Reorder pharmacy images
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/pharmacies/:id/images/reorder
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "imageIds": []
+  }
+}
+
+example {
+  name: 200 Response
+  description: Pharmacy images reordered successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/pharmacies/:id/images/reorder
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "imageIds": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "id": 0,
+            "pharmacy": "",
+            "cmsImage": {
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "originalFileName": "",
+              "extension": "",
+              "fileName": "",
+              "mimetype": "",
+              "size": 0,
+              "width": 0,
+              "height": 0,
+              "url": "",
+              "externalId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            },
+            "isMain": false,
+            "sortOrder": 0
+          }
+        ]
+      '''
+    }
+  }
+}

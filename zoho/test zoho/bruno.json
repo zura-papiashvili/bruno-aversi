@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "test zoho",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

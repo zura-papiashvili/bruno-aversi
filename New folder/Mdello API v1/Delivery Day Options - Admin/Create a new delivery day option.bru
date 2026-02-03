@@ -1,0 +1,69 @@
+meta {
+  name: Create a new delivery day option
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/delivery-day-options
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "deliveryMethodId": 0,
+    "type": "",
+    "value": "",
+    "code": "",
+    "labelGE": "",
+    "labelEN": "",
+    "descriptionGE": "",
+    "descriptionEN": "",
+    "cutoffTime": "",
+    "availableOnDays": [],
+    "isActive": false,
+    "sortOrder": 0
+  }
+}
+
+example {
+  name: 201 Response
+  description: Day option created successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-day-options
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "deliveryMethodId": 0,
+        "type": "",
+        "value": "",
+        "code": "",
+        "labelGE": "",
+        "labelEN": "",
+        "descriptionGE": "",
+        "descriptionEN": "",
+        "cutoffTime": "",
+        "availableOnDays": [],
+        "isActive": false,
+        "sortOrder": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,43 @@
+meta {
+  name: Delete an easy offer
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseUrl}}/api_admin/v1/easy-offers/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: The easy offer has been successfully deleted.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/easy-offers/:id
+    method: DELETE
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

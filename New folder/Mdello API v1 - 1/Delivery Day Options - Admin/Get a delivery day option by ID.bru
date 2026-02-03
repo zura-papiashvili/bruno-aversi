@@ -1,0 +1,43 @@
+meta {
+  name: Get a delivery day option by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/delivery-day-options/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Day option details.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-day-options/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

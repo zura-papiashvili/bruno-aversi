@@ -1,0 +1,43 @@
+meta {
+  name: Get payment journal entries for an order (all transactions)
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/orders/:id/payment-journal
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 200 Response
+  description: Payment journal entries for all transactions related to the order
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/orders/:id/payment-journal
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

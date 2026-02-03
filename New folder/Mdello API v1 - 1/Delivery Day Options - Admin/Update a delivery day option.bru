@@ -1,0 +1,77 @@
+meta {
+  name: Update a delivery day option
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/delivery-day-options/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "deliveryMethodId": 0,
+    "type": "",
+    "value": "",
+    "code": "",
+    "labelGE": "",
+    "labelEN": "",
+    "descriptionGE": "",
+    "descriptionEN": "",
+    "cutoffTime": "",
+    "availableOnDays": [],
+    "isActive": false,
+    "sortOrder": 0
+  }
+}
+
+example {
+  name: 200 Response
+  description: Day option updated successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-day-options/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "deliveryMethodId": 0,
+        "type": "",
+        "value": "",
+        "code": "",
+        "labelGE": "",
+        "labelEN": "",
+        "descriptionGE": "",
+        "descriptionEN": "",
+        "cutoffTime": "",
+        "availableOnDays": [],
+        "isActive": false,
+        "sortOrder": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

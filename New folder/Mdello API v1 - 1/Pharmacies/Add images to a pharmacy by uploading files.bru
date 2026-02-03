@@ -1,0 +1,70 @@
+meta {
+  name: Add images to a pharmacy by uploading files
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/pharmacies/:id/images
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+example {
+  name: 201 Response
+  description: Images added to pharmacy.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/pharmacies/:id/images
+    method: POST
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+          {
+            "id": 0,
+            "pharmacy": "",
+            "cmsImage": {
+              "id": 0,
+              "externalProjectId": "",
+              "externalUserId": "",
+              "originalFileName": "",
+              "extension": "",
+              "fileName": "",
+              "mimetype": "",
+              "size": 0,
+              "width": 0,
+              "height": 0,
+              "url": "",
+              "externalId": "",
+              "createdAt": "",
+              "updatedAt": ""
+            },
+            "isMain": false,
+            "sortOrder": 0
+          }
+        ]
+      '''
+    }
+  }
+}

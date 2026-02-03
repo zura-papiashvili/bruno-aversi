@@ -1,0 +1,63 @@
+meta {
+  name: Create a new restriction
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/delivery-method-restrictions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "deliveryMethodId": 0,
+    "productId": 0,
+    "brandId": 0,
+    "categoryId": 0,
+    "allowedDayOptions": [],
+    "allowedPharmacyModes": [],
+    "isBlocked": false,
+    "priority": 0,
+    "isActive": false
+  }
+}
+
+example {
+  name: 201 Response
+  description: Restriction created successfully.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-method-restrictions
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "deliveryMethodId": 0,
+        "productId": 0,
+        "brandId": 0,
+        "categoryId": 0,
+        "allowedDayOptions": [],
+        "allowedPharmacyModes": [],
+        "isBlocked": false,
+        "priority": 0,
+        "isActive": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

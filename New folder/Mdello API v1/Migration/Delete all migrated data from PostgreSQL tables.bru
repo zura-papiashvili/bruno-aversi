@@ -1,0 +1,42 @@
+meta {
+  name: Delete all migrated data from PostgreSQL tables
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/v1/admin/migration/clean
+  body: none
+  auth: inherit
+}
+
+params:query {
+  projectId: 
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api/v1/admin/migration/clean
+    method: POST
+    mode: none
+    params:query: {
+      projectId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

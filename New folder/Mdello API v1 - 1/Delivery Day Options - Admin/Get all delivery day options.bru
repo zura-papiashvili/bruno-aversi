@@ -1,0 +1,59 @@
+meta {
+  name: Get all delivery day options
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/delivery-day-options
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~deliveryMethodId: 
+  ~type: 
+  ~code: 
+  ~isActive: 
+}
+
+example {
+  name: 200 Response
+  description: List of day options.
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/delivery-day-options
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~deliveryMethodId: 
+      ~type: 
+      ~code: 
+      ~isActive: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

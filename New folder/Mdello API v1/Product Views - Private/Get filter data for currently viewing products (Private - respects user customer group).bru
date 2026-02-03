@@ -1,0 +1,43 @@
+meta {
+  name: Get filter data for currently viewing products (Private - respects user customer group)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/products/currently-viewing/filters
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~minutesAgo: 
+}
+
+example {
+  name: 200 Response
+  description: Filter data for currently viewing products
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/products/currently-viewing/filters
+    method: GET
+    mode: none
+    params:query: {
+      ~minutesAgo: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

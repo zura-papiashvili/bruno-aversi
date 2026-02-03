@@ -1,0 +1,115 @@
+meta {
+  name: Get all products visible for current user
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api_private/v1/products
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 
+  ~page: 
+  ~sortBy: 
+  ~sortOrder: 
+  ~search: 
+  ~asOneProduct: 
+  ~discountRanges: 
+  ~createdFrom: 
+  ~createdTo: 
+  ~categoryIds: 
+  ~name: 
+  ~code: 
+  ~categoryId: 
+  ~subcategoryId: 
+  ~featureValueIds: 
+  ~status: 
+  ~minPrice: 
+  ~maxPrice: 
+  ~minQuantity: 
+  ~maxQuantity: 
+  ~minTotalStock: 
+  ~maxTotalStock: 
+  ~weight: 
+  ~minOrders: 
+  ~maxOrders: 
+  ~stockAvailable: 
+  ~brandId: 
+  ~brandIds: 
+  ~variationGroupId: 
+  ~internalCode: 
+  ~easyOfferId: 
+  ~easyOfferIds: 
+  ~easyOfferBannerId: 
+  ~offerSectionKey: 
+  ~cartOfferIds: 
+  ~ids: 
+  ~lang: 
+}
+
+example {
+  name: 200 Response
+  description: List of products with paging.
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/products
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 
+      ~page: 
+      ~sortBy: 
+      ~sortOrder: 
+      ~search: 
+      ~asOneProduct: 
+      ~discountRanges: 
+      ~createdFrom: 
+      ~createdTo: 
+      ~categoryIds: 
+      ~name: 
+      ~code: 
+      ~categoryId: 
+      ~subcategoryId: 
+      ~featureValueIds: 
+      ~status: 
+      ~minPrice: 
+      ~maxPrice: 
+      ~minQuantity: 
+      ~maxQuantity: 
+      ~minTotalStock: 
+      ~maxTotalStock: 
+      ~weight: 
+      ~minOrders: 
+      ~maxOrders: 
+      ~stockAvailable: 
+      ~brandId: 
+      ~brandIds: 
+      ~variationGroupId: 
+      ~internalCode: 
+      ~easyOfferId: 
+      ~easyOfferIds: 
+      ~easyOfferBannerId: 
+      ~offerSectionKey: 
+      ~cartOfferIds: 
+      ~ids: 
+      ~lang: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

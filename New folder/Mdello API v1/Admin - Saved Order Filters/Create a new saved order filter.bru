@@ -1,0 +1,147 @@
+meta {
+  name: Create a new saved order filter
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api_admin/v1/saved-order-filters
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "",
+    "description": "",
+    "filters": {},
+    "columnOrder": []
+  }
+}
+
+example {
+  name: 201 Response
+  description: Saved filter created successfully
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-order-filters
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "filters": {},
+        "columnOrder": []
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": 0,
+          "name": "",
+          "filters": {},
+          "admin": {
+            "id": 0,
+            "email": "",
+            "phone": "",
+            "password": "",
+            "firstName": "",
+            "lastName": "",
+            "fullName": "",
+            "isEmailVerified": false,
+            "countryCode": "",
+            "roles": [
+              {
+                "adminRoleId": 0,
+                "externalProjectId": "",
+                "adminId": 0,
+                "roleId": 0,
+                "role": {
+                  "id": {},
+                  "externalProjectId": "",
+                  "name": "",
+                  "permissions": [
+                    {
+                      "id": 0,
+                      "resource": "",
+                      "verb": "",
+                      "createdAt": ""
+                    }
+                  ],
+                  "createdAt": ""
+                },
+                "admin": ""
+              }
+            ],
+            "preferences": [
+              {
+                "id": 0,
+                "key": "",
+                "value": {},
+                "adminId": 0,
+                "admin": "",
+                "createdAt": "",
+                "updatedAt": ""
+              }
+            ],
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          "description": "",
+          "shared": false,
+          "columnOrder": [],
+          "createdAt": "",
+          "updatedAt": "",
+          "deletedAt": ""
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 409 Response
+  description: A saved filter with this name already exists
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/saved-order-filters
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "name": "",
+        "description": "",
+        "filters": {},
+        "columnOrder": []
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
