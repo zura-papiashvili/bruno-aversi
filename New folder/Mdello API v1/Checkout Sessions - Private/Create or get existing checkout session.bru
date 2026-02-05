@@ -1,0 +1,53 @@
+meta {
+  name: Create or get existing checkout session
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/v1/checkout-sessions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": "",
+    "guestSessionId": "",
+    "abandonedCartId": 0,
+    "checkoutData": {}
+  }
+}
+
+example {
+  name: 201 Response
+  description: Session created or returned
+  
+  request: {
+    url: {{baseUrl}}/api/v1/checkout-sessions
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "userId": "",
+        "guestSessionId": "",
+        "abandonedCartId": 0,
+        "checkoutData": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

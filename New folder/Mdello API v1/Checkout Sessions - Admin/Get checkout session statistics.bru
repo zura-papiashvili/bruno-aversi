@@ -1,0 +1,35 @@
+meta {
+  name: Get checkout session statistics
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api_admin/v1/checkout-sessions/stats/overview
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/checkout-sessions/stats/overview
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

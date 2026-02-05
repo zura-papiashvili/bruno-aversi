@@ -1,0 +1,56 @@
+meta {
+  name: Place order from checkout session
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/v1/checkout-sessions/:token/place-order
+  body: json
+  auth: inherit
+}
+
+params:path {
+  token: 
+}
+
+body:json {
+  {
+    "expectedTotalAmount": 0,
+    "forceNewOrder": false
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api/v1/checkout-sessions/:token/place-order
+    method: POST
+    mode: json
+    params:path: {
+      token: 
+    }
+  
+    body:json: {
+      {
+        "expectedTotalAmount": 0,
+        "forceNewOrder": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

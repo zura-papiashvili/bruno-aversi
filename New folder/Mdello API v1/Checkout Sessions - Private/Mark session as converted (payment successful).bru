@@ -1,0 +1,42 @@
+meta {
+  name: Mark session as converted (payment successful)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/v1/checkout-sessions/:token/convert
+  body: none
+  auth: inherit
+}
+
+params:path {
+  token: 
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api/v1/checkout-sessions/:token/convert
+    method: POST
+    mode: none
+    params:path: {
+      token: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

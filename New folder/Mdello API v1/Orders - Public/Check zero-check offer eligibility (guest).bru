@@ -1,0 +1,50 @@
+meta {
+  name: Check zero-check offer eligibility (guest)
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/orders/check-zero-offer
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: Eligibility check result
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/orders/check-zero-offer
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "eligible": false,
+          "offerId": 0,
+          "offerName": "",
+          "offerMessage": "",
+          "offerImageUrl": "",
+          "reservationId": 0,
+          "tempToken": "",
+          "expiresAt": "",
+          "qualifiedSequence": 0
+        }
+      '''
+    }
+  }
+}

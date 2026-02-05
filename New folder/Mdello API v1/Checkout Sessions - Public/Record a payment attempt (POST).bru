@@ -1,0 +1,62 @@
+meta {
+  name: Record a payment attempt (POST)
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/checkout-sessions/:token/payment-attempt
+  body: json
+  auth: inherit
+}
+
+params:path {
+  token: 
+}
+
+body:json {
+  {
+    "transactionId": "",
+    "provider": "",
+    "status": {},
+    "errorCode": "",
+    "errorMessage": ""
+  }
+}
+
+example {
+  name: 201 Response
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/checkout-sessions/:token/payment-attempt
+    method: POST
+    mode: json
+    params:path: {
+      token: 
+    }
+  
+    body:json: {
+      {
+        "transactionId": "",
+        "provider": "",
+        "status": {},
+        "errorCode": "",
+        "errorMessage": ""
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

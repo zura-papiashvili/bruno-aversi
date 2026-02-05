@@ -1,0 +1,35 @@
+meta {
+  name: Get session statistics for current user
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api/v1/checkout-sessions/stats/me
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api/v1/checkout-sessions/stats/me
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

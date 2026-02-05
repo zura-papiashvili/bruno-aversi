@@ -14,6 +14,7 @@ body:json {
   {
     "name": "",
     "description": "",
+    "message": "",
     "imageUrl": "",
     "status": "",
     "isActive": false,
@@ -27,6 +28,7 @@ body:json {
     "discountDays": [],
     "nthOrderTrigger": 0,
     "nthUserTrigger": 0,
+    "isZeroCheckOffer": false,
     "dailyLimit": 0,
     "monthlyLimit": 0,
     "perUserFrequencyOperator": "",
@@ -52,6 +54,9 @@ body:json {
         "brandIds": [],
         "giftProductId": 0,
         "giftProductIds": [],
+        "giftProducts": [
+          {}
+        ],
         "giftQuantity": 0,
         "giftSelectionRequired": false,
         "giftOptional": false,
@@ -84,6 +89,7 @@ example {
       {
         "name": "",
         "description": "",
+        "message": "",
         "imageUrl": "",
         "status": "",
         "isActive": false,
@@ -97,6 +103,7 @@ example {
         "discountDays": [],
         "nthOrderTrigger": 0,
         "nthUserTrigger": 0,
+        "isZeroCheckOffer": false,
         "dailyLimit": 0,
         "monthlyLimit": 0,
         "perUserFrequencyOperator": "",
@@ -122,6 +129,9 @@ example {
             "brandIds": [],
             "giftProductId": 0,
             "giftProductIds": [],
+            "giftProducts": [
+              {}
+            ],
             "giftQuantity": 0,
             "giftSelectionRequired": false,
             "giftOptional": false,
@@ -160,6 +170,7 @@ example {
           "id": 0,
           "name": "",
           "description": "",
+          "message": "",
           "imageUrl": "",
           "status": "",
           "isActive": false,
@@ -172,6 +183,7 @@ example {
           "allowStacking": false,
           "nthOrderTrigger": 0,
           "nthUserTrigger": 0,
+          "isZeroCheckOffer": false,
           "dailyLimit": 0,
           "monthlyLimit": 0,
           "perUserFrequencyOperator": {},
@@ -397,12 +409,9 @@ example {
                     "deliveryMethod": "",
                     "deliveryMethodId": 0,
                     "type": "",
-                    "value": "",
+                    "value": 0,
                     "code": "",
-                    "labelGE": "",
-                    "labelEN": "",
-                    "descriptionGE": "",
-                    "descriptionEN": "",
+                    "label": "",
                     "cutoffTime": "",
                     "availableOnDays": [],
                     "isActive": false,
@@ -632,7 +641,8 @@ example {
                 "productFeatureValues": [
                   {}
                 ],
-                "extraData": {}
+                "extraData": {},
+                "hasAversiImage": false
               }
             ],
             "brands": [

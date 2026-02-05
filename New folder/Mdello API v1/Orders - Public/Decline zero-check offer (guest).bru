@@ -1,0 +1,71 @@
+meta {
+  name: Decline zero-check offer (guest)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api_public/v1/orders/decline-zero-offer/:reservationId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  reservationId: 
+}
+
+example {
+  name: 200 Response
+  description: Successfully declined
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/orders/decline-zero-offer/:reservationId
+    method: POST
+    mode: none
+    params:path: {
+      reservationId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Reservation not found
+  
+  request: {
+    url: {{baseUrl}}/api_public/v1/orders/decline-zero-offer/:reservationId
+    method: POST
+    mode: none
+    params:path: {
+      reservationId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

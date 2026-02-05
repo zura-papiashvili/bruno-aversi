@@ -1,0 +1,114 @@
+meta {
+  name: Update checkout session (admin)
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/api_admin/v1/checkout-sessions/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "customerFullName": "",
+    "customerPhone": "",
+    "customerEmail": "",
+    "deliveryMethodId": 0,
+    "deliveryAddress": "",
+    "deliveryLatitude": 0,
+    "deliveryLongitude": 0,
+    "customerZoneId": 0,
+    "customerRegionId": 0,
+    "pharmacyId": 0,
+    "deliveryTime": "",
+    "dayOptionCode": "",
+    "customerComment": "",
+    "paymentMethodId": 0,
+    "items": [
+      {
+        "productId": 0,
+        "quantity": 0,
+        "clientUnitPrice": 0
+      }
+    ],
+    "promoCode": "",
+    "declinedGiftProductIds": [],
+    "giftSelections": [
+      {
+        "benefitId": 0,
+        "productId": 0
+      }
+    ],
+    "source": {},
+    "metadata": {}
+  }
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/api_admin/v1/checkout-sessions/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "customerFullName": "",
+        "customerPhone": "",
+        "customerEmail": "",
+        "deliveryMethodId": 0,
+        "deliveryAddress": "",
+        "deliveryLatitude": 0,
+        "deliveryLongitude": 0,
+        "customerZoneId": 0,
+        "customerRegionId": 0,
+        "pharmacyId": 0,
+        "deliveryTime": "",
+        "dayOptionCode": "",
+        "customerComment": "",
+        "paymentMethodId": 0,
+        "items": [
+          {
+            "productId": 0,
+            "quantity": 0,
+            "clientUnitPrice": 0
+          }
+        ],
+        "promoCode": "",
+        "declinedGiftProductIds": [],
+        "giftSelections": [
+          {
+            "benefitId": 0,
+            "productId": 0
+          }
+        ],
+        "source": {},
+        "metadata": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

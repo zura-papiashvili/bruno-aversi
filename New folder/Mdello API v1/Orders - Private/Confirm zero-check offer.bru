@@ -1,0 +1,163 @@
+meta {
+  name: Confirm zero-check offer
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/api_private/v1/orders/confirm-zero-offer/:reservationId
+  body: none
+  auth: apikey
+}
+
+params:path {
+  reservationId: 
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  description: Confirmation result with offer details
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/orders/confirm-zero-offer/:reservationId
+    method: POST
+    mode: none
+    params:path: {
+      reservationId: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "offerId": 0,
+          "offerName": "",
+          "totalAmount": 0,
+          "reservationId": 0
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/orders/confirm-zero-offer/:reservationId
+    method: POST
+    mode: none
+    params:path: {
+      reservationId: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Reservation not found
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/orders/confirm-zero-offer/:reservationId
+    method: POST
+    mode: none
+    params:path: {
+      reservationId: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 410 Response
+  description: Reservation expired
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/orders/confirm-zero-offer/:reservationId
+    method: POST
+    mode: none
+    params:path: {
+      reservationId: 
+    }
+  
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 410
+      text: Gone
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

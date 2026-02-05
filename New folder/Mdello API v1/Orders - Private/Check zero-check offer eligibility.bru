@@ -1,0 +1,91 @@
+meta {
+  name: Check zero-check offer eligibility
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api_private/v1/orders/check-zero-offer
+  body: none
+  auth: apikey
+}
+
+headers {
+  x-session-id: {{apiKey}}
+}
+
+auth:apikey {
+  key: x-session-id
+  value: {{apiKey}}
+  placement: header
+}
+
+example {
+  name: 200 Response
+  description: Eligibility check result
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/orders/check-zero-offer
+    method: POST
+    mode: none
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "eligible": false,
+          "offerId": 0,
+          "offerName": "",
+          "offerMessage": "",
+          "offerImageUrl": "",
+          "reservationId": 0,
+          "tempToken": "",
+          "expiresAt": "",
+          "qualifiedSequence": 0
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: Missing Token or Session ID
+  
+  request: {
+    url: {{baseUrl}}/api_private/v1/orders/check-zero-offer
+    method: POST
+    mode: none
+    headers: {
+      x-session-id: {{apiKey}}
+    }
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

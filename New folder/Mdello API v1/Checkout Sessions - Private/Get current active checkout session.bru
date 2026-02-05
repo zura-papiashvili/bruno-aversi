@@ -1,0 +1,61 @@
+meta {
+  name: Get current active checkout session
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/v1/checkout-sessions/current
+  body: none
+  auth: inherit
+}
+
+example {
+  name: 200 Response
+  description: Active session found
+  
+  request: {
+    url: {{baseUrl}}/api/v1/checkout-sessions/current
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: No active session
+  
+  request: {
+    url: {{baseUrl}}/api/v1/checkout-sessions/current
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
